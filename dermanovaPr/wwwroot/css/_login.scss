@@ -1,0 +1,314 @@
+@import "./var";
+
+/*
+
+    LOGIN
+
+
+
+*/
+
+
+:root {
+    --white: #f2f2f2;
+    --black: #582562;
+    --very-light-pink: #f2f2f2;
+    --text-input-field: #f2f2f2;
+    --hospital-green: #582562;
+}
+
+.login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: #f2f2f2;
+}
+
+div .logo {
+    height: 20vh;
+}
+
+.logo {
+    justify-content: center;
+    align-items: center;
+}
+
+.title-l {
+    @include titulos($Fuente1);
+    margin: 0;
+    color: #582562;
+    text-align: center;
+    margin-right: 2rem;
+}
+
+.title-a {
+    margin-bottom: 2rem;
+    justify-self: left;
+    text-align: left;
+}
+
+.title-sub {
+    color: var(--very-light-pink);
+    margin-top: 0;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 76vh;
+}
+
+.form-c {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    justify-items: center;
+}
+
+.form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form a {
+    color: var(--hospital-green);
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 52px;
+    text-decoration: underline;
+    font-weight: 300;
+}
+
+.login-s {
+    height: 20vh;
+}
+
+.label {
+    color: #582562;
+    margin-bottom: 0.25rem;
+    @include textos($Fuente2);
+}
+
+.value {
+    background-color: var(--text-input-field);
+    border-radius: 20px;
+    height: 2rem;
+    width: 100%;
+    padding: 0.25rem;
+    margin: 0.5rem 0 2rem 0;
+}
+
+.input {
+    background-color: #f2f2f2;
+    border: solid 5px #582562;
+    border-radius: 20px;
+    height: 3rem;
+    padding: 0.25rem;
+    margin-bottom: 2rem;
+}
+
+.input-email, .input-name, .input-password {
+    margin-bottom: 3rem;
+    @include textos($Fuente2);
+}
+
+.primary-btn {
+    color: var(--white);
+    background-color: var(--hospital-green);
+    width: 100%;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.login-btn {
+    margin-top: 14px;
+    margin-bottom: 30px;
+    @include textos($Fuente2);
+}
+
+.secondary-btn {
+    color: var(--hospital-green);
+    background-color: #f2f2f2;
+    border: none;
+    cursor: pointer;
+    width: 160px;
+}
+
+.secondary-btn a {
+    text-decoration: none;
+    color: #582562;
+}
+
+.signup-btn {
+    position: fixed;
+    box-sizing: border-box;
+    padding: 1.6rem 1.6rem;
+    right: 24px;
+    bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Login */
+
+
+
+
+
+
+
+
+/*.login{
+    width: 100%;    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: $c3;
+}
+
+// Seccion de Logo y Marca
+div .logo{
+    height: 20vh;
+}
+
+.logo{
+    justify-content: center;
+    align-items: center;
+}
+
+.title-l{
+    @include titulos($Fuente1);
+	margin: 0;
+    color: $c1;
+    text-align: center;
+    margin-right: 2rem;
+}
+
+.title-a{
+    margin-bottom: 2rem;
+    justify-self: left;
+    text-align: left;
+}
+
+.title-sub{
+    color: $c3;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+// Seccion de Formulario
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 76vh;
+}
+
+.form-c{
+    display: grid;
+    height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    justify-items: center;
+}
+
+.form div{
+    display: flex;
+    flex-direction: column;
+}
+
+.form a{
+    color: $c1;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 52px;
+    text-decoration: underline;
+    font-weight: 300;
+}
+
+.login-s{
+    height: 20vh;
+}
+
+.label{
+    color: $c1;
+    margin-bottom: 0.25rem;
+    @include textos($Fuente2);
+}
+
+.value{
+    background-color: $c3;
+    border-radius: 20px;
+    height: 2rem;
+    width: 100%;
+    padding: 0.25rem;
+    margin: 0.5rem 0 2rem 0;  
+}
+
+.input{
+    background-color: $c3;
+    border: solid 5px $c1;
+    border-radius: 20px;
+    height: 3rem;
+    
+    padding: 0.25rem;
+    margin-bottom: 2rem;
+}
+
+.input-email, .input-name, .input-password{
+    margin-bottom: 3rem;
+    @include textos($Fuente2);
+}
+
+.primary-btn{
+    color: $c3;
+    background-color: $c1;
+
+    width: 100%;    height: 50px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.login-btn {
+    margin-top: 14px;
+    margin-bottom: 30px;
+    @include textos($Fuente2);
+}
+
+// Seccion de Correcion de Ingreso
+.secondary-btn{
+    color: $c1;
+    background-color: $c3;
+    border: none;
+    cursor: pointer;
+    width: 160px;
+
+}
+
+.secondary-btn a{
+    text-decoration: none;
+    color: $c1;
+}
+
+.signup-btn{
+    position: fixed;
+    box-sizing: border-box;
+    padding: 1.6rem 1.6rem;
+    right: 24px; bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}*/
+/* 
+
+    LOGIN
+
+*/

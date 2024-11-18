@@ -1,0 +1,80 @@
+﻿@page "/users"
+@using Microsoft.AspNetCore.Identity
+@using dermanovaPr.Services.InterfaceServices
+@inject IJSRuntime JSRuntime
+
+<h3>ListUsers</h3>
+
+<h3>Lista de Usuarios</h3>
+
+@if (users == null)
+{
+    <p>Cargando usuarios...</p>
+}
+else if (!users.Any())
+{
+    <p>No hay usuarios disponibles.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Nombre de Usuario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in users)
+            {
+                <tr>
+                    <td>@user.Email</td>
+                    <td>@user.UserName</td>
+                    <td>
+                        <a class="btn btn-primary" href="/edit-user/@user.Id">Editar</a>
+                        <button class="btn btn-danger btn-sm" @onclick="() => DeleteUser(user.Id)">
+                            <i class="bi bi-trash"></i> Eliminar
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code
+{
+    [Inject] IuserServices services { get; set; }
+    private List<IdentityUser>? users { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        if (services != null)
+        {
+            users = await services.ObtenerTodosLosUsuariosAsync();
+
+        }
+
+    }
+    private async Task DeleteUser(string Id)
+    {
+        if (services != null)
+        {
+            bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm", "¿Estás seguro de que deseas eliminar este empleado?");
+            if (confirmed)
+            {
+                var result = await services.DeleteUsers(Id);
+
+                if (result == null)
+                {
+                    await JSRuntime.InvokeVoidAsync("confirmd", "error al eliminar");
+                }
+                else
+                {
+                    await JSRuntime.InvokeVoidAsync("confirmd", "se elimino correctamente");
+                }
+            }
+        }
+    }
+
+}

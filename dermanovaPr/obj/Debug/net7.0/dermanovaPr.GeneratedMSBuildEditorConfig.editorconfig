@@ -1,0 +1,127 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = dermanovaPr
+build_property.RootNamespace = dermanovaPr
+build_property.ProjectDir = C:\Users\varga\OneDrive\Desktop\TESIS\dermanovaPr.sln\dermanovaPr\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\varga\OneDrive\Desktop\TESIS\dermanovaPr.sln\dermanovaPr
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/Areas/Identity/Pages/Account/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/Components/CCC.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDQ0MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/Components/RedirectToLogin.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSZWRpcmVjdFRvTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/CRUDs/CCliente/AddCliente.razor]
+build_metadata.AdditionalFiles.TargetPath = Q1JVRHNcQ0NsaWVudGVcQWRkQ2xpZW50ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/CRUDs/CCliente/ClientesData.razor]
+build_metadata.AdditionalFiles.TargetPath = Q1JVRHNcQ0NsaWVudGVcQ2xpZW50ZXNEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/CRUDs/CitasCRUD/CitasData.razor]
+build_metadata.AdditionalFiles.TargetPath = Q1JVRHNcQ2l0YXNDUlVEXENpdGFzRGF0YS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/CRUDs/CitasCRUD/Cronograma.razor]
+build_metadata.AdditionalFiles.TargetPath = Q1JVRHNcQ2l0YXNDUlVEXENyb25vZ3JhbWEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/CRUDs/CitasCRUD/Registros_Citas.razor]
+build_metadata.AdditionalFiles.TargetPath = Q1JVRHNcQ2l0YXNDUlVEXFJlZ2lzdHJvc19DaXRhcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/CRUDs/PdecimientosCRUD/PadecimientosCRUD.razor]
+build_metadata.AdditionalFiles.TargetPath = Q1JVRHNcUGRlY2ltaWVudG9zQ1JVRFxQYWRlY2ltaWVudG9zQ1JVRC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/CRUDs/PrestacionesCrud/PrestacionesCRUD.razor]
+build_metadata.AdditionalFiles.TargetPath = Q1JVRHNcUHJlc3RhY2lvbmVzQ3J1ZFxQcmVzdGFjaW9uZXNDUlVELnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/CRUDs/RegaliasCRUD/RegaliasCrud.razor]
+build_metadata.AdditionalFiles.TargetPath = Q1JVRHNcUmVnYWxpYXNDUlVEXFJlZ2FsaWFzQ3J1ZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/CRUDs/TrabajadoresCRUD/DataTrabajadores.razor]
+build_metadata.AdditionalFiles.TargetPath = Q1JVRHNcVHJhYmFqYWRvcmVzQ1JVRFxEYXRhVHJhYmFqYWRvcmVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/CRUDs/TrabajadoresCRUD/EditUsers.razor]
+build_metadata.AdditionalFiles.TargetPath = Q1JVRHNcVHJhYmFqYWRvcmVzQ1JVRFxFZGl0VXNlcnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/CRUDs/TrabajadoresCRUD/ListUsers.razor]
+build_metadata.AdditionalFiles.TargetPath = Q1JVRHNcVHJhYmFqYWRvcmVzQ1JVRFxMaXN0VXNlcnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/CRUDs/TrabajadoresCRUD/RegisterUsers.razor]
+build_metadata.AdditionalFiles.TargetPath = Q1JVRHNcVHJhYmFqYWRvcmVzQ1JVRFxSZWdpc3RlclVzZXJzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-n50ab7d9ap
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-hyoi3t0vgi
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/Areas/Identity/Pages/_IdentityLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX0lkZW50aXR5TGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varga/OneDrive/Desktop/TESIS/dermanovaPr.sln/dermanovaPr/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

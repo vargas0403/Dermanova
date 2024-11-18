@@ -1,0 +1,124 @@
+﻿@page "/Regalias"
+@using dermanovaPr.Models
+@using dermanovaPr.Models.Dtos
+@using dermanovaPr.Services
+@using dermanovaPr.Services.InterfaceServices
+
+<h3>Regalias</h3>
+
+<button @onclick="ShowAddModal" class="btn btn-success mb-3">Agregar Nueva Regalia</button>
+
+@if (List == null || !List.Any())
+{
+    <p>No hay regalias disponibles.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Cantidad Disponible</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var regalia in List)
+            {
+                <tr>
+                    <td>@regalia.RegaliasId</td>
+                    <td>@regalia.Name</td>
+                    <td>@regalia.Marcas</td>
+                    <td>@regalia.Unidades</td>
+                    <td>
+                        <button @onclick="() => EditRegalia(regalia.RegaliasId)" class="btn btn-primary">Editar</button>
+                        <button @onclick="() => DeleteRegalia(regalia.RegaliasId)" class="btn btn-danger">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<!-- Modal para agregar una nueva regalia -->
+@if (isAddModalVisible)
+{
+    <div class="modal show d-block" tabindex="-1" style="background-color: rgba(0, 0, 0, 0.5);">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar Nueva Regalia</h5>
+                    <button type="button" class="btn-close" @onclick="CloseAddModal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" @bind="dTOS.Name" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descripción</label>
+                        <input type="text" class="form-control" @bind="dTOS.Marcas" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="units" class="form-label">Cantidad Disponible</label>
+                        <input type="number" class="form-control" @bind="dTOS.Unidades" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseAddModal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" @onclick="AddRegalia">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code
+{
+    [Inject] IregaliasServices services { get; set; }
+    private List<Regalias> List = new List<Regalias>();
+    private RegaliasDTOS dTOS = new RegaliasDTOS();
+    private bool isAddModalVisible = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (services != null)
+        {
+            var get = await services.GetRegalias();
+            List = get.ListRegalias;
+        }
+    }
+
+    private void ShowAddModal()
+    {
+        isAddModalVisible = true;
+    }
+
+    private void CloseAddModal()
+    {
+        isAddModalVisible = false;
+      //  newRegalia = new RegaliasDTOS(); // Limpiar el formulario después de cerrar
+    }
+
+    private async Task AddRegalia()
+    {
+        if (services != null)
+        {
+            await services.AddRegalias(dTOS);
+           // Actualiza la lista local (puedes recargar también)
+            CloseAddModal();
+        }
+    }
+
+    private async Task EditRegalia(int id)
+    {
+        // Lógica para editar una regalia
+    }
+
+    private async Task DeleteRegalia(int id)
+    {
+        // Lógica para eliminar la regalia
+    }
+}

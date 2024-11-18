@@ -1,0 +1,169 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\naomi\\onedrive\\escritorio\\dermanovapr.sln\\dermanovapr\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\naomi\\onedrive\\escritorio\\dermanovapr.sln\\dermanovapr\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\naomi\\onedrive\\escritorio\\dermanovapr.sln\\dermanovapr\\models\\dtos\\prestacionesdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\models\\dtos\\prestacionesdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\naomi\\onedrive\\escritorio\\dermanovapr.sln\\dermanovapr\\cruds\\prestacionescrud\\prestacionescrud.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\cruds\\prestacionescrud\\prestacionescrud.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\naomi\\onedrive\\escritorio\\dermanovapr.sln\\dermanovapr\\services\\interfaceservices\\iprestacionesservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\services\\interfaceservices\\iprestacionesservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\naomi\\onedrive\\escritorio\\dermanovapr.sln\\dermanovapr\\dermanovapr.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\dermanovapr.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\naomi\\onedrive\\escritorio\\dermanovapr.sln\\dermanovapr\\cruds\\pdecimientoscrud\\padecimientoscrud.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\cruds\\pdecimientoscrud\\padecimientoscrud.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\naomi\\onedrive\\escritorio\\dermanovapr.sln\\dermanovapr\\models\\prestaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\models\\prestaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\naomi\\onedrive\\escritorio\\dermanovapr.sln\\dermanovapr\\services\\interfaceservices\\ipadecimientoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\services\\interfaceservices\\ipadecimientoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IPrestacionesServices.cs",
+              "DocumentMoniker": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\Services\\InterfaceServices\\IPrestacionesServices.cs",
+              "RelativeDocumentMoniker": "dermanovaPr\\Services\\InterfaceServices\\IPrestacionesServices.cs",
+              "ToolTip": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\Services\\InterfaceServices\\IPrestacionesServices.cs",
+              "RelativeToolTip": "dermanovaPr\\Services\\InterfaceServices\\IPrestacionesServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T15:16:10.592Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "dermanovaPr\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "dermanovaPr\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-13T04:11:44.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "dermanovaPr\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeToolTip": "dermanovaPr\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAwCoAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-13T00:02:15.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "dermanovaPr.csproj",
+              "DocumentMoniker": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\dermanovaPr.csproj",
+              "RelativeDocumentMoniker": "dermanovaPr\\dermanovaPr.csproj",
+              "ToolTip": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\dermanovaPr.csproj",
+              "RelativeToolTip": "dermanovaPr\\dermanovaPr.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-12T21:40:02.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PrestacionesCRUD.razor",
+              "DocumentMoniker": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\CRUDs\\PrestacionesCrud\\PrestacionesCRUD.razor",
+              "RelativeDocumentMoniker": "dermanovaPr\\CRUDs\\PrestacionesCrud\\PrestacionesCRUD.razor",
+              "ToolTip": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\CRUDs\\PrestacionesCrud\\PrestacionesCRUD.razor",
+              "RelativeToolTip": "dermanovaPr\\CRUDs\\PrestacionesCrud\\PrestacionesCRUD.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-12T16:24:20.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PrestacionesDTOS.cs",
+              "DocumentMoniker": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\Models\\Dtos\\PrestacionesDTOS.cs",
+              "RelativeDocumentMoniker": "dermanovaPr\\Models\\Dtos\\PrestacionesDTOS.cs",
+              "ToolTip": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\Models\\Dtos\\PrestacionesDTOS.cs",
+              "RelativeToolTip": "dermanovaPr\\Models\\Dtos\\PrestacionesDTOS.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T15:13:15.517Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PadecimientosCRUD.razor",
+              "DocumentMoniker": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\CRUDs\\PdecimientosCRUD\\PadecimientosCRUD.razor",
+              "RelativeDocumentMoniker": "dermanovaPr\\CRUDs\\PdecimientosCRUD\\PadecimientosCRUD.razor",
+              "ToolTip": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\CRUDs\\PdecimientosCRUD\\PadecimientosCRUD.razor",
+              "RelativeToolTip": "dermanovaPr\\CRUDs\\PdecimientosCRUD\\PadecimientosCRUD.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-10T21:53:50.95Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Prestaciones.cs",
+              "DocumentMoniker": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\Models\\Prestaciones.cs",
+              "RelativeDocumentMoniker": "dermanovaPr\\Models\\Prestaciones.cs",
+              "ToolTip": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\Models\\Prestaciones.cs",
+              "RelativeToolTip": "dermanovaPr\\Models\\Prestaciones.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T14:57:29.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IPadecimientoServices.cs",
+              "DocumentMoniker": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\Services\\InterfaceServices\\IPadecimientoServices.cs",
+              "RelativeDocumentMoniker": "dermanovaPr\\Services\\InterfaceServices\\IPadecimientoServices.cs",
+              "ToolTip": "C:\\Users\\naomi\\OneDrive\\Escritorio\\dermanovaPr.sln\\dermanovaPr\\Services\\InterfaceServices\\IPadecimientoServices.cs",
+              "RelativeToolTip": "dermanovaPr\\Services\\InterfaceServices\\IPadecimientoServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-10T20:50:53.039Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

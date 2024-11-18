@@ -1,0 +1,140 @@
+﻿@page "/register-cita"
+@using dermanovaPr.Models.Dtos
+@using dermanovaPr.Models.Responses
+@using dermanovaPr.Services
+@using dermanovaPr.Services.InterfaceServices
+@using dermanovaPr.Models
+
+<h3>Registrar Cita con Factura</h3>
+
+<EditForm Model="CitaForm" OnValidSubmit="SaveCitaWithFactura">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="fecha" class="form-label">Fecha de la Cita</label>
+        <InputDate id="fecha" class="form-control" @bind-Value="CitaForm.Fecha" />
+    </div>
+
+    <div class="mb-3">
+        <label for="hora" class="form-label">Hora de la Cita (Formato: HH:mm)</label>
+        <InputText id="hora" class="form-control" @bind-Value="horaInput" />
+        <ValidationMessage For="@(() => horaInput)" />
+    </div>
+
+    <div class="mb-3">
+        <label for="clienteId" class="form-label">Cliente</label>
+        <InputSelect id="clienteId" class="form-control" @bind-Value="CitaForm.ClienteId">
+            <option value="">Seleccione un cliente</option>
+            @foreach (var cliente in ListClientes)
+            {
+                <option value="@cliente.ClienteId">@cliente.Nombre</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div class="mb-3">
+        <label for="trabajadorId" class="form-label">Trabajador</label>
+        <InputSelect id="trabajadorId" class="form-control" @bind-Value="CitaForm.TrabajadorId">
+            <option value="">Seleccione un trabajador</option>
+            @foreach (var trabajador in ListTrabajadores)
+            {
+                <option value="@trabajador.TrabajadoresId">@trabajador.Nombre</option>
+            }
+        </InputSelect>
+    </div>
+
+    <h4>Servicios (Prestaciones)</h4>
+    @foreach (var detalle in FacturaDetalles)
+    {
+        <div class="mb-3">
+            <label for="prestacionesId" class="form-label">Prestación</label>
+            <InputSelect id="prestacionesId" class="form-control" @bind-Value="detalle.PrestacionesId">
+                <option value="">Seleccione una prestación</option>
+                @foreach (var prestacion in Listpres)
+                {
+                    <option value="@prestacion.PrestacionesId">@prestacion.Name</option>
+                }
+            </InputSelect>
+        </div>
+
+        <div class="mb-3">
+            <label for="cantidad" class="form-label">Cantidad</label>
+            <InputNumber id="cantidad" class="form-control" @bind-Value="detalle.Cantidad" />
+        </div>
+
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio Unitario</label>
+            <InputNumber id="precio" class="form-control" @bind-Value="detalle.Precio" />
+        </div>
+
+        <button type="button" class="btn btn-danger" @onclick="() => RemoveDetalle(detalle)">Eliminar Servicio</button>
+        <hr />
+    }
+
+    <button type="button" class="btn btn-primary" @onclick="AddDetalle">Añadir Servicio</button>
+
+    <button type="submit" class="btn btn-success mt-4">Guardar Cita y Factura</button>
+</EditForm>
+
+@code {
+    [Inject] Icitas_FacturacionServices? CitasFacturacionService { get; set; }
+    [Inject] IPrestacionesServices? prestacionesServices { get; set; }
+    [Inject] IClientes? ClientesServices { get; set; }
+    [Inject] ITrabajadores? trabajadoresServices { get; set; }
+
+    private List<Prestaciones> Listpres = new List<Prestaciones>();
+    private List<Clientes> ListClientes = new List<Clientes>();
+    private List<Trabajadores> ListTrabajadores = new List<Trabajadores>();
+    private string horaInput { get; set; } = "00:00"; // Valor predeterminado en formato HH:mm
+
+    private CitasDTOS CitaForm = new CitasDTOS();
+    private List<DetallesDTOS> FacturaDetalles = new List<DetallesDTOS>();
+
+    private void AddDetalle()
+    {
+        FacturaDetalles.Add(new DetallesDTOS { Cantidad = 1, Precio = 0 });
+    }
+
+    private void RemoveDetalle(DetallesDTOS detalle)
+    {
+        FacturaDetalles.Remove(detalle);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Configura un valor de hora predeterminado si es necesario
+        horaInput = DateTime.Now.ToString("HH:mm");
+
+        if (prestacionesServices != null && ClientesServices != null && trabajadoresServices != null)
+        {
+            // Cargar listas para selección
+            var listC = await ClientesServices.GetClientes();
+            ListClientes = listC?.Listclientes ?? new List<Clientes>();
+
+            var ListP = await prestacionesServices.GetPrestaciones();
+            Listpres = ListP?.ListPres ?? new List<Prestaciones>();
+
+            var ListTRAP = await trabajadoresServices.GetTrabajadores();
+            ListTrabajadores = ListTRAP?.trabjL ?? new List<Trabajadores>();
+        }
+    }
+
+    private async Task SaveCitaWithFactura()
+    {
+        // Convertir `horaInput` en `TimeSpan`
+        if (TimeSpan.TryParse(horaInput, out TimeSpan horaParsed))
+        {
+            CitaForm.Hora = horaParsed;
+        }
+
+        var factura = new FacturacionDTOS
+            {
+                Fecha = DateTime.Now,
+                State = true
+            };
+
+        // Guardar factura y cita
+        await CitasFacturacionService.AddCitaFac(factura, FacturaDetalles, CitaForm);
+    }
+}

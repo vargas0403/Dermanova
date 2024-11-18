@@ -1,0 +1,181 @@
+﻿@page
+
+
+@model LoginModel
+
+
+@*vanilla*@
+<html lang="en">
+<head>
+    <meta charset="UTF-7">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dermanova</title>
+    <link rel="stylesheet" href="../wwwroot/css/bootstrap/bootstrap.min.css">
+    <link rel="icon" type="image/png" href=".../wwwroot/assets/morado.png" />
+
+</head>
+<body>
+    <div class="login">
+        <div class="form-c">
+            <div class="logo">
+                <span class="icon">
+                    <img src="~/assets/morado.png" />
+                    @* <img src="../wwwroot/assets/morado.png" alt=""> *@
+                </span>
+                <span class="title-l">Dermanova</span>
+            </div>
+
+            <form id="account" method="post" class="form">
+                <div class="login-s">
+                    <label for="User" class="label">Usuario</label>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="text" id="UserName" placeholder=" email@example.com" asp-for="Input.UserName">
+                </div>
+
+                <div class="login-s">
+                    <label for="password" class="label">Contraseña</label>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="password" id="password-idc" placeholder=" ************" asp-for="Input.Password">
+                </div>
+                
+
+                <div class="login-s">
+                    <button class="primary-btn login-btn" type="submit">Acceder</button>
+@* 
+                    <input type="submit" value="Acceder" class="primary-btn login-btn" name="" id=""> *@
+                </div> 
+                <a href="/">Olvidé mi Contraseña</a>
+            </form>
+        </div>
+        <button class="secondary-btn signup-btn"><a href="/Identity/Account/Register">Crear Usuario</a></button>
+    </div>
+</body>
+</html>
+   
+    
+
+
+
+
+
+
+
+
+
+
+ @*{
+
+    <section class="vh-100" style="background-color: #88c7f2;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
+                    <div class="card" style="border-radius: 1rem;">
+                        <div class="row g-0">
+                            <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                
+                            </div>
+                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                <div class="card-body p-4 p-lg-5 text-black">
+
+                                    <form id="account" method="post">
+                                        <div class="d-flex align-items-center mb-3 pb-1">
+                                            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                            <span class="h1 fw-bold mb-0">Logo</span>
+                                        </div>
+
+                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+
+                                        <div class="form-outline mb-3">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <label for="email" class="form-label">E-mail</label>
+                                            <input asp-for="Input.UserName"
+                                                   class="form-control form-control-lg"
+                                                   autocomplete="on"
+                                                   aria-required="true"
+                                                   placeholder="User" />
+                                        </div>
+
+                                        <div class="form-outline mb-3 pb-3">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <label for="password" class="form-label">Password</label>
+                                            <input asp-for="Input.Password"
+                                                   type="password"
+                                                   class="form-control form-control-lg"
+                                                   autocomplete="on"
+                                                   aria-required="true"
+                                                   id="password"
+                                                   placeholder="Password" />
+                                        </div>
+
+                                            <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+                                             
+                                        <a class="small text-muted" href="#!">Forgot password?</a>
+                                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/Identity/Account/Register" style="color: #393f81;">Register here</a></p>
+                                        <a href="#!" class="small text-muted">Terms of use.</a>
+                                        <a href="#!" class="small text-muted">Privacy policy</a>
+                                    </form>
+
+                                </div>
+                                <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/registerUsers" style="color: #393f81;">Register here</a></p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <a class="text-decoration-none btn btn-outline-primary" href="">Go to create a new account</a>
+            </div>
+        </div>
+    </section>
+} *@
+
+ 
+@* 
+@{
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dermanova</title>
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="icon" type="image/svg" href="../assets/morado-i.svg" />
+    </head>
+    <body>
+        <div class="login">
+            <div class="form-c">
+                <div class="logo">
+                    <span class="icon">
+                        <img src="../assets/morado.png" alt="">
+                    </span>
+                    <span class="title-l">Dermanova</span>
+                </div>
+
+                <form action="/" class="form">
+                    <div class="login-s">
+                        <label for="email" class="label">Usuario</label>
+                        <input type="text" id="email" placeholder=" email@example.com" class="input input-email">
+                    </div>
+
+                    <div class="login-s">
+                        <label for="password" class="label">Contraseña</label>
+                        <input type="password" id="password-idc" placeholder=" ************" class="input input-password">
+                    </div>
+
+                    <div class="login-s">
+                        <input type="submit" value="Acceder" class="primary-btn login-btn" name="" id="">
+                    </div>
+                    <a href="/">Olvidé mi Contraseña</a>
+                </form>
+            </div>
+            <button class="secondary-btn signup-btn"><a href="./register.html">Crear Usuario</a></button>
+        </div>
+    </body>
+    </html>
+
+
+} *@

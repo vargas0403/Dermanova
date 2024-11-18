@@ -1,0 +1,47 @@
+@import "./var";
+//Deprecation Warning: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+/* 
+
+    MENU 
+
+*/
+// Contenedor del Menu
+.content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+// Botones Principales
+.card {
+    @include titulos($Fuente1);
+    background-color: $c1;
+    color: $c3;
+
+    font-weight: bold;
+    border: none;
+    padding: 15px 40px;
+    // border: $c2 5px solid;
+    border-radius: 36px;
+    width: 30vw;
+    height: 80px;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 6vw;
+    
+    &:hover {
+        background-color: #2C1231;
+        // box-shadow: 0 0 3px 5px $c2;
+        /* Menu.scss */
+    }
+}
+/* 
+
+    MENU 
+
+*/

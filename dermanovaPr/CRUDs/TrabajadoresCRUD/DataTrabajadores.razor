@@ -1,0 +1,58 @@
+﻿@page "/Trabajadores"
+@using dermanovaPr.Models
+@using dermanovaPr.Services.InterfaceServices
+
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Listado de Trabajadores</h3>
+
+    @if (listTrab == null || !listTrab.Any())
+    {
+        <div class="alert alert-warning text-center" role="alert">
+            No se encontraron trabajadores.
+        </div>
+    }
+    else
+    {
+        <table class="table table-hover table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Cedula</th>
+                    <th scope="col">Cargo</th>
+                    <th scope="col">Departamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var trabajador in listTrab)
+                {
+                    <tr>
+                        <td>@(listTrab.IndexOf(trabajador) + 1)</td>
+                        <td>@trabajador.Nombre</td>
+                        <td>@trabajador.Cedula</td>
+                        <td>@trabajador.Celular</td>
+                        <td>@trabajador.Puesto</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    [Inject] ITrabajadores? Services { get; set; }
+    [Inject] IuserServices ? Users { get; set; }
+    private List<Trabajadores> listTrab = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Services != null)
+        {
+            // var listT = await Services.GetTrabajadores();
+            // listTrab = listT.trabjL;
+            
+        }
+    }
+}

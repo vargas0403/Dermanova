@@ -1,0 +1,88 @@
+﻿@inject Icitas_FacturacionServices CitasFacturacionService
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@page "/CitaData"
+@using dermanovaPr.Models.Dtos
+@using dermanovaPr.Services.InterfaceServices
+
+<h3>Mis Citas</h3>
+
+@if (loading)
+{
+    <p>Cargando citas...</p>
+}
+else if (!citas.Any())
+{
+    <p>No tienes citas registradas.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Cliente</th>
+                <th>padecimientos</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cita in citas)
+            {
+                <tr>
+                    <td>@cita.Fecha.ToShortDateString()</td>
+                    <td>@cita.Hora</td>
+                    <td>@cita.ClienteNombre</td>
+                    <td>@cita.padecimientoNombre</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<CitasDTOS> citas = new();
+    private bool loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Obtener el estado de autenticación
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+            // Obtener el TrabajadorId del claim
+            string trabajadorIdString = user.FindFirst(c => c.Type == "TrabajadorId")?.Value;
+
+            if (string.IsNullOrEmpty(trabajadorIdString) || !int.TryParse(trabajadorIdString, out int trabajadorId))
+            {
+                throw new Exception("TrabajadorId no válido o no encontrado en los claims.");
+            }
+
+            // Llamar al servicio para obtener las citas
+            var response = await CitasFacturacionService.GetCitas(trabajadorId);
+
+            if (response.IsSuccess)
+            {
+                citas = response.Data as List<CitasDTOS> ?? new List<CitasDTOS>();
+
+            }
+            else
+            {
+                NavigationManager.NavigateTo("/error");
+            }
+        }
+        catch (Exception ex)
+        {
+            // Manejo de errores (opcional: mostrar un mensaje al usuario)
+            Console.WriteLine($"Error al cargar las citas: {ex.Message}");
+            NavigationManager.NavigateTo("/error");
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+}

@@ -1,0 +1,61 @@
+﻿@page "/Servicios"
+@using dermanovaPr.Models.Dtos
+@using dermanovaPr.Services.InterfaceServices
+@inject NavigationManager Nav_
+
+<h3>Agregar Prestación</h3>
+
+<EditForm Model="dTOS" OnValidSubmit="AddPrestaciones">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <InputText @bind-Value="dTOS.Name" id="name" class="form-control" />
+        <ValidationMessage For="@(() => dTOS.Name)" />
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Descripción</label>
+        <InputTextArea @bind-Value="dTOS.Description" id="description" class="form-control" />
+        <ValidationMessage For="@(() => dTOS.Description)" />
+    </div>
+
+    <div class="mb-3">
+        <label for="costo" class="form-label">Costo</label>
+        <InputNumber @bind-Value="dTOS.costo" id="costo" class="form-control" />
+        <ValidationMessage For="@(() => dTOS.costo)" />
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Guardar Prestación</button>
+</EditForm>
+
+@code {
+    [Inject] IPrestacionesServices services { get; set; }
+    private PrestacionesDTOS dTOS = new PrestacionesDTOS();
+
+    private async Task AddPrestaciones()
+    {
+        if (services != null)
+        {
+            var result = await services.AddPrestaciones(dTOS);
+            if (result != null)
+            {
+                Console.WriteLine("Prestación guardada exitosamente.");
+                Nav_.NavigateTo("/");
+
+            }
+            else
+            {
+                Console.WriteLine("Error al guardar la prestación.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Error: servicio no disponible.");
+        }
+    }
+}

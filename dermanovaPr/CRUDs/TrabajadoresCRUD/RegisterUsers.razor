@@ -1,0 +1,384 @@
+﻿@page "/registerUsers"
+@using Microsoft.AspNetCore.Identity
+@using System.ComponentModel.DataAnnotations
+@using System.Text.RegularExpressions
+@using System.Security.Claims
+@using dermanovaPr.Data
+@using dermanovaPr.Models
+@using dermanovaPr.Services.InterfaceServices
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+@inject DataContext DataContext
+
+<section class="h-100 bg-dark">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <div class="card card-registration my-4">
+                    <div class="row g-0">
+                        <div class="col-xl-6">
+                            <div class="card-body p-md-5 text-black">
+                                <h3 class="mb-5 text-uppercase">Registro de Usuarios</h3>
+
+                                <EditForm Model="Input" OnValidSubmit="HandleRegister">
+                                    <DataAnnotationsValidator />
+                                    <ValidationSummary />
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <InputText @bind-Value="TrabajadoreInput.Nombre" id="Nombre" autocomplete="on"
+                                                           aria-required="true" class="form-control form-control-lg" />
+                                                <ValidationMessage For="@(() => TrabajadoreInput.Nombre)" />
+                                                <label class="form-label" for="Nombre">Nombre</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <InputText @bind-Value="Input.UserName" id="Usuario" autocomplete="on"
+                                                           aria-required="true" class="form-control form-control-lg" />
+                                                <ValidationMessage For="@(() => Input.UserName)" />
+                                                <label class="form-label" for="Usuario">Usuario</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="mb-3">
+                                                <label for="Cedula" class="form-label">Cédula</label>
+                                                <InputText @bind-Value="CedulaInput.Cedula" id="Cedula" class="form-control" />
+                                                <span class="text-danger">@CedulaError</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <InputText @bind-Value="TrabajadoreInput.Celular" id="Celular" autocomplete="on"
+                                                           aria-required="true" class="form-control form-control-lg" />
+                                                <ValidationMessage For="@(() => TrabajadoreInput.Celular)" />
+                                                <label class="form-label" for="Celular">Celular</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <InputText @bind-Value="Input.Email" id="Email" autocomplete="on"
+                                                           aria-required="true" class="form-control form-control-lg" />
+                                                <label class="form-label" for="Email">Email</label>
+                                                <ValidationMessage For="@(() => Input.Email)" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="password" class="form-label">Password</label>
+                                        <InputText @bind-Value="Input.Password" type="password" id="password"
+                                                   class="form-control" autocomplete="on" aria-required="true"
+                                                   placeholder="Password" />
+                                        <ValidationMessage For="@(() => Input.Password)" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="ConfirmPassword" class="form-label">Confirmar Password</label>
+                                        <InputText @bind-Value="Input.ConfirmPassword" type="password" id="ConfirmPassword"
+                                                   class="form-control" autocomplete="on" aria-required="true"
+                                                   placeholder="Password" />
+                                        <ValidationMessage For="@(() => Input.ConfirmPassword)" />
+                                    </div>
+
+                                    <InputSelect id="roleSelect" class="form-select" @bind-Value="Input.RoleName">
+                                        <option value="">Seleccionar rol</option>
+                                        @foreach (var role in roles)
+                                        {
+                                            <option value="@role.Name">@role.Name</option>
+                                        }
+                                    </InputSelect>
+
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <InputText @bind-Value="TrabajadoreInput.Puesto" id="Puesto" autocomplete="on"
+                                                       aria-required="true" class="form-control form-control-lg" />
+                                            <label class="form-label" for="Puesto">Puesto</label>
+                                            <ValidationMessage For="@(() => TrabajadoreInput.Puesto)" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="d-flex justify-content-end pt-3">
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                                <path fill-rule="evenodd"
+                                                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                            </svg> Agregar
+                                        </button>
+                                    </div>
+                                </EditForm>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@code {
+    [Inject] ITrabajadores Servicios { get; set; }
+    [Inject] IuserServices servicesU { get; set; }
+    // Inicializa las propiedades para evitar nulos
+    private InputModel Input { get; set; } = new();
+
+    private List<IdentityRole> roles = new List<IdentityRole>();
+    private Trabajadores TrabajadoreInput { get; set; } = new();
+    private CedulaModel CedulaInput { get; set; } = new();
+    private string CedulaError;
+    private string CC;
+    private ValidationMessageStore _validationMessageStore;
+
+    private EditContext editContext;
+
+    protected override async Task OnInitializedAsync()
+    {
+        editContext = new EditContext(Input);
+        _validationMessageStore = new ValidationMessageStore(editContext);
+
+        try
+        {
+            roles = await servicesU.GetRoles(); // Llama al servicio para obtener los roles
+            if (roles == null || !roles.Any())
+            {
+                Console.WriteLine("No se encontraron roles en la base de datos.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar roles: {ex.Message}");
+        }
+    }
+
+
+    // Modelo de entrada para la cédula
+    public class CedulaModel
+    {
+        public string Cedula { get; set; } = string.Empty;
+    }
+
+    private async Task HandleRegister()
+    {
+        // Limpiar mensajes de validación anteriores
+        _validationMessageStore.Clear();
+
+        // Validar las contraseñas
+        if (Input.ConfirmPassword != Input.Password)
+        {
+            _validationMessageStore.Add(() => Input.ConfirmPassword, "Las contraseñas no coinciden.");
+            editContext.NotifyValidationStateChanged();
+            return;
+        }
+
+        // Validar que TrabajadoreInput no sea nulo
+        if (TrabajadoreInput == null)
+        {
+            _validationMessageStore.Add(() => TrabajadoreInput, "Los datos del trabajador no están completos.");
+            editContext.NotifyValidationStateChanged();
+            return;
+        }
+
+        // Validar la cédula
+        if (!ValidarCedula(CedulaInput.Cedula))
+        {
+            CedulaError = "La cédula no es válida.";
+            editContext.NotifyValidationStateChanged();
+            return;
+        }
+        else
+        {
+            // CedulaError = ="La cédula es válida.";
+            TrabajadoreInput.Cedula = CedulaInput.Cedula;
+
+
+        }
+        using var transaction = await DataContext.Database.BeginTransactionAsync();
+
+        // Lógica de creación del usuario
+        var identity = new IdentityUser
+            {
+                Email = Input.Email,
+                UserName = Input.UserName
+            };
+
+        var exist = await UserManager.FindByNameAsync(Input.UserName);
+        var existE = await UserManager.FindByEmailAsync(Input.Email);
+
+        if (exist != null)
+        {
+            _validationMessageStore.Add(() => Input.UserName, "El nombre de usuario ya está en uso.");
+            editContext.NotifyValidationStateChanged();
+            //return;
+        }
+
+        if (existE != null)
+        {
+            _validationMessageStore.Add(() => Input.Email, "El email ya está en uso.");
+            editContext.NotifyValidationStateChanged();
+            // return;
+        }
+
+        var result = await UserManager.CreateAsync(identity, Input.Password);
+
+        if (result.Succeeded)
+        {
+            // var roleName = DataContext.Users.Count() == 1 ? "Administrador" : "Trabajadores";
+            await UserManager.AddToRoleAsync(identity, Input.RoleName);
+
+            // await  Servicios.AddTrabajador(TrabajadoreInput);
+            var trabajadores = new Trabajadores
+                {
+                    Nombre = TrabajadoreInput.Nombre,
+                    Cedula = TrabajadoreInput.Cedula,
+                    UserId = identity.Id,
+                    State = true,
+                    Celular = TrabajadoreInput.Celular,
+                    Puesto = TrabajadoreInput.Puesto
+                };
+
+            DataContext.Trabajadores.Add(trabajadores);
+            await DataContext.SaveChangesAsync();
+            await UserManager.AddClaimAsync(identity, new Claim("TrabajadorId",trabajadores.TrabajadoresId.ToString()));
+            await transaction.CommitAsync();
+        }
+        else
+        {
+            foreach (var error in result.Errors)
+            {
+                _validationMessageStore.Add(() => Input.Password, error.Description);
+                editContext.NotifyValidationStateChanged();
+            }
+        }
+    }
+
+
+    // Método de validación de cédula
+    private bool ValidarCedula(string cedula)
+    {
+        string pattern = @"^\d{3}-\d{6}-\d{4}[A-Z]$";
+        var regex = new System.Text.RegularExpressions.Regex(pattern);
+
+        if (!regex.IsMatch(cedula))
+        {
+            return false;
+        }
+
+        // Separar las partes de la cédula
+        string[] partes = cedula.Split('-');
+        string region = partes[0];
+        string fecha = partes[1];
+        string serie = partes[2].Substring(0, 4);
+        char letraVerificacion = partes[2][4];
+
+        // Validar la región
+        if (!int.TryParse(region, out int numeroRegion) || numeroRegion < 1 || numeroRegion > 999)
+        {
+            return false;
+        }
+
+        // Validar la fecha
+        if (!EsFechaValida(fecha))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool EsFechaValida(string fecha)
+    {
+        if (fecha.Length != 6)
+        {
+            return false;
+        }
+
+        int dia = int.Parse(fecha.Substring(0, 2));
+        int mes = int.Parse(fecha.Substring(2, 2));
+        int año = int.Parse(fecha.Substring(4, 2)) + 1900;
+
+        try
+        {
+            DateTime fechaNacimiento = new DateTime(año, mes, dia);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public class NoSpacesAttribute : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            if (value is string stringValue && stringValue.Contains(" "))
+            {
+                return new ValidationResult("El nombre de usuario no debe contener espacios.");
+            }
+
+            return ValidationResult.Success;
+        }
+    }
+
+    public class PasswordComplexityAttribute : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            if (value is string password)
+            {
+                if (!Regex.IsMatch(password, @"[!@#$%^&*(),.?\:{}|<>]"))
+                {
+                    return new ValidationResult("La contraseña debe contener al menos un carácter especial.");
+                }
+
+                if (!Regex.IsMatch(password, @"\d"))
+                {
+                    return new ValidationResult("La contraseña debe contener al menos un número.");
+                }
+
+                if (!Regex.IsMatch(password, @"[A-Z]"))
+                {
+                    return new ValidationResult("La contraseña debe contener al menos una letra mayúscula.");
+                }
+
+                if (!Regex.IsMatch(password, @"[a-z]"))
+                {
+                    return new ValidationResult("La contraseña debe contener al menos una letra minúscula.");
+                }
+            }
+
+            return ValidationResult.Success;
+        }
+    }
+
+    public class InputModel
+    {
+        [Required(ErrorMessage = "El nombre de usuario es obligatorio.")]
+        [StringLength(50, ErrorMessage = "El nombre de usuario no puede tener más de 50 caracteres.")]
+        [NoSpaces(ErrorMessage = "El nombre de usuario no debe contener espacios.")]
+        public string UserName { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "El correo electrónico es obligatorio.")]
+        [EmailAddress(ErrorMessage = "El formato del correo electrónico no es válido.")]
+        public string Email { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "La contraseña es obligatoria.")]
+        [StringLength(100, ErrorMessage = "La contraseña debe tener al menos {2} y máximo {1} caracteres.", MinimumLength = 6)]
+        [PasswordComplexity(ErrorMessage = "La contraseña debe cumplir con los requisitos de complejidad.")]
+        public string Password { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Debe confirmar la contraseña.")]
+        [Compare("Password", ErrorMessage = "Las contraseñas no coinciden.")]
+        public string ConfirmPassword { get; set; } = string.Empty;
+
+        public string RoleName { get; set; }
+    }
+}

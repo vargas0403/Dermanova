@@ -1,0 +1,157 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\dermanovaPr.bundle.scp.css",
+      "PackagePath": "staticwebassets\\dermanovaPr.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\Calibri.ttf",
+      "PackagePath": "staticwebassets\\assets\\Calibri.ttf"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\arrow-l.svg",
+      "PackagePath": "staticwebassets\\assets\\arrow-l.svg"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\arrow-r.svg",
+      "PackagePath": "staticwebassets\\assets\\arrow-r.svg"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\blanco.png",
+      "PackagePath": "staticwebassets\\assets\\blanco.png"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\blanco.svg",
+      "PackagePath": "staticwebassets\\assets\\blanco.svg"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\exit.png",
+      "PackagePath": "staticwebassets\\assets\\exit.png"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\exit.svg",
+      "PackagePath": "staticwebassets\\assets\\exit.svg"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\favicon.png",
+      "PackagePath": "staticwebassets\\assets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\mask.png",
+      "PackagePath": "staticwebassets\\assets\\mask.png"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\mask.svg",
+      "PackagePath": "staticwebassets\\assets\\mask.svg"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\morado-i.svg",
+      "PackagePath": "staticwebassets\\assets\\morado-i.svg"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\morado.png",
+      "PackagePath": "staticwebassets\\assets\\morado.png"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\morado.svg",
+      "PackagePath": "staticwebassets\\assets\\morado.svg"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\pedicure.png",
+      "PackagePath": "staticwebassets\\assets\\pedicure.png"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\assets\\pedicure.svg",
+      "PackagePath": "staticwebassets\\assets\\pedicure.svg"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\_body.scss",
+      "PackagePath": "staticwebassets\\css\\_body.scss"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\_error.scss",
+      "PackagePath": "staticwebassets\\css\\_error.scss"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\_login.scss",
+      "PackagePath": "staticwebassets\\css\\_login.scss"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\_menu.scss",
+      "PackagePath": "staticwebassets\\css\\_menu.scss"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\_sidebar.scss",
+      "PackagePath": "staticwebassets\\css\\_sidebar.scss"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\_var.scss",
+      "PackagePath": "staticwebassets\\css\\_var.scss"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "PackagePath": "staticwebassets\\css\\open-iconic"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "PackagePath": "staticwebassets\\css\\open-iconic"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\open-iconic\\README.md",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\README.md"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
+    },
+    {
+      "Id": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.dermanovaPr.props",
+      "PackagePath": "build\\dermanovaPr.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.dermanovaPr.props",
+      "PackagePath": "buildMultiTargeting\\dermanovaPr.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.dermanovaPr.props",
+      "PackagePath": "buildTransitive\\dermanovaPr.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.dermanovaPr.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

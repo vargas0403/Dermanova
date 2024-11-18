@@ -1,0 +1,89 @@
+/* 
+
+	Var.scss 
+	
+*/
+
+/* 
+	@import "./var";
+
+	Esta propiedad se usa en la parte inicial de todos los documentos _sass.scss
+	Significa que importa todos los estilos aquí almacenados
+	Esta propiedad fue modificada y en un año será defasada, funciona, pero puede dar un warning
+
+*/
+
+//Variables
+$Fuente1: 'Calibri', sans-serif;
+$Fuente2: 'Calibri', sans-serif;
+$c1: #582562;
+$c2: #70b934;
+$c3: #f2f2f2;
+$cv: #00000080;
+
+// Los Mixin guardan estilos específicos dentro de una variable
+@mixin titulos($fuente) {
+	@if $fuente == $Fuente1 {
+		font-family: $Fuente1;
+		// text-transform: uppercase; // Esta linea convierte el tipo de letra a mayuscula
+		font-weight: 700;
+		font-size: 3.6rem;
+
+		@media screen and (max-width: 768px) {
+			font-size: 2rem;
+		}
+	} 
+}
+@mixin textos($fuente) {
+	@if $fuente == $Fuente2 {
+		font-family: $Fuente2;
+		font-weight: Bold;
+		font-size: 2rem;
+
+		@media screen and (max-width: 768px) {
+			font-size: 1.5rem;
+		}
+	}
+}
+
+// @font-face está importando la tipografía Calibri desde Assets
+@font-face {
+  font-family: 'Calibri'; /* Nombre personalizado de la tipografía */
+  src: url('../../assets/Calibri.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+	font-size: 62.5%; //Se hace para que la medida Rem mida 10px, y por ende 0.8rem=8px
+}
+
+// Clase principal del Main
+.container {
+	background-color: $c3;
+	display: flex;
+	height: 100vh;
+}
+
+// 
+body, p, a, span, div, button{
+	@include textos($Fuente2);
+		margin: 0;
+}
+
+header{
+  position: sticky;
+}
+
+section {
+	margin: 0 auto;
+	padding: 0 5px;
+}
+
+h1, h2{
+	@include titulos($Fuente1);
+}
+
+h2{
+	margin-left: 12vw;
+}

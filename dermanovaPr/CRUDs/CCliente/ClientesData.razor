@@ -1,0 +1,68 @@
+﻿@page "/ClientList"
+@using dermanovaPr.Models
+@using dermanovaPr.Models.Dtos
+@using dermanovaPr.Services
+@using dermanovaPr.Services.InterfaceServices
+@inject NavigationManager Nav_
+
+<!-- Botón para agregar un nuevo cliente -->
+<button class="btn btn-success" @onclick="GoToAddClient">Add New Client</button>
+
+<!-- Botón para refrescar la lista de clientes -->
+<button class="btn btn-primary" @onclick="LoadClients">Refresh Clients</button>
+
+<!-- Verificamos si la lista de clientes está vacía o nula -->
+@if (ClientL == null || !ClientL.Any())
+{
+    <h1>No Clients Found</h1>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Cedula</th>
+                <th scope="col">Celular</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ClientL)
+            {
+                <tr>
+                    <td>@item.Nombre</td>
+                    <td>@item.Cedula</td>
+                    <td>@item.Celular</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Inject] IClientes services { get; set; }
+    public List<Clientes>? ClientL = new List<Clientes>();
+
+    // Método que se ejecuta cuando se inicializa el componente
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadClients();
+    }
+
+    // Método para cargar la lista de clientes
+    private async Task LoadClients()
+    {
+        if (services != null)
+        {
+            var response = await services.GetClientes();
+            ClientL = response.Listclientes;
+        }
+    }
+
+    // Método para redirigir al formulario de agregar cliente
+    private void GoToAddClient()
+    {
+        Nav_.NavigateTo("/Clt"); // Redirigimos a la página para agregar cliente
+    }
+}
+

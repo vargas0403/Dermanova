@@ -1,0 +1,133 @@
+﻿<h3>PadecimientosCRUD</h3>
+@page "/Padecimeinto"
+@using System.ComponentModel.DataAnnotations
+@using dermanovaPr.Models
+@using dermanovaPr.Models.Dtos
+@using dermanovaPr.Services
+@using dermanovaPr.Services.InterfaceServices
+@inject NavigationManager Nav_
+@inject IJSRuntime JSRuntime
+
+<h3 class="align-content-center">Formato de Entrada</h3>
+
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Padecimiento</h5>
+                </div>
+                <div class="card-body">
+                    <EditForm Model="@dTOS" OnValidSubmit="AddPadecimientos">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+                        
+                       
+
+                        <!-- Campo Name -->
+                        <div class="form-group mb-3">
+                            <label for="padecimientoname">Name</label>
+                            <InputText @bind-Value="dTOS.Name" class="form-control" id="name" />
+                            <span class="text-danger">@NameError</span>
+                        </div>
+
+                        <!-- Campo Description -->
+                        <div class="form-group mb-3">
+                            <label for="Description">Description</label>
+                            <InputText @bind-Value="dTOS.Description" class="form-control" id="description" />
+                        </div>
+
+                        <!-- Botón de Enviar -->
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h3>Lista de Padecimientos</h3>
+
+<div>
+    @if (padecimientos != null && padecimientos.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var padecimiento in padecimientos)
+                {
+                    <tr>
+                        <td>@padecimiento.PadecimientosId</td>
+                        <td>@padecimiento.Name</td>
+                        <td>@padecimiento.Description</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else if (!string.IsNullOrEmpty(NameError))
+    {
+        <p class="text-danger">@NameError</p>
+    }
+    else
+    {
+        <p>Cargando...</p>
+    }
+</div>
+
+
+
+@code {
+    [Inject] IPadecimientoServices services { get; set; }
+
+    // Inicializar el modelo PadecimientoDTOS
+    public PadecimientoDTOS dTOS { get; set; } = new();
+    private List<PadecimientoDTOS> padecimientos = new List<PadecimientoDTOS>();
+
+    private string NameError { get; set; } = string.Empty;
+
+    private async Task AddPadecimientos()
+    {
+        var result = await services.AddPadecimientos(dTOS);
+        // Aquí iría la lógica para agregar el padecimiento
+        Nav_.NavigateTo("/Padecimiento"); 
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadPadecimientos();
+    }
+
+    private async Task LoadPadecimientos()
+    {
+        var response = await services.GetPadecimientosAsync();
+        if (response.StatusCode == 200)
+        {
+            // Si la respuesta es exitosa, asigna la lista de padecimientos
+            padecimientos = response.ListPadecimientos
+                .Select(p => new PadecimientoDTOS
+                    {
+                        PadecimientosId = p.PadecimientosId,
+                        Name = p.Name,
+                        Description = p.Description
+                    }).ToList();
+        }
+        else
+        {
+            // Muestra el mensaje de error en caso de fallo
+            NameError = response.Message;
+        }
+    }
+}
+
+  
+
+}
+
+

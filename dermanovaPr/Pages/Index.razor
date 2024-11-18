@@ -1,0 +1,70 @@
+﻿
+@inject NavigationManager Nav
+
+
+@page "/"
+@using dermanovaPr.Services.InterfaceServices
+ <AuthorizeView Roles="Operador">
+<button class="btn btn-success" @onclick="citas"> Citas</button>
+
+</AuthorizeView>
+<button class="btn btn-success" @onclick="total"> Citas</button>
+
+
+
+
+
+@code
+{
+    [Inject] Icitas_FacturacionServices CitasService { get; set; }
+    private List<FechaGrupoDTO> CitasAgrupadas;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await CitasService.GetCitasAgrupadasPorFechaYHora();
+
+        if (response.IsSuccess)
+        {
+            CitasAgrupadas = response.Data as List<FechaGrupoDTO>;
+        }
+        else
+        {
+            CitasAgrupadas = new List<FechaGrupoDTO>();
+        }
+    }
+
+    private class FechaGrupoDTO
+    {
+        public DateTime Fecha { get; set; }
+        public List<HoraGrupoDTO> Horas { get; set; } = new();
+    }
+
+    private class HoraGrupoDTO
+    {
+        public string Hora { get; set; }
+        public List<CitaDTO> Citas { get; set; } = new();
+    }
+
+    private class CitaDTO
+    {
+        public int CitasId { get; set; }
+        public string ClienteNombre { get; set; }
+        public DateTime Fecha { get; set; }
+        public string Hora { get; set; }
+    }
+
+
+
+
+    private void citas()
+    {
+
+        Nav.NavigateTo("/CitaData");
+
+    }
+
+    private void total()
+    {
+        Nav.NavigateTo("/cronograma");
+    }
+    }

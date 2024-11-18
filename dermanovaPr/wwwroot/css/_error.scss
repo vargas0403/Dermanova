@@ -1,0 +1,49 @@
+@import "./var";
+
+/*
+
+    ERROR
+
+*/
+// Seccion principal de Logo y Marca
+.main-e{
+    width: 100%;    height: 100vh;
+    background-color: #f2f2f2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-e{
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    height: 30vh; 
+}
+
+.icon-e img{
+    max-width: 20rem;
+}
+
+.title-e{
+    font-family: $Fuente1;
+		// text-transform: uppercase;
+	font-weight: 700;
+	font-size: 6.4rem;
+
+	margin: 0;
+    color: #582562;
+    text-align: center;
+}
+
+.title-a{
+    margin-bottom: 2rem;
+    justify-self: left;
+    text-align: left;
+}
+/*
+
+    ERROR
+
+*/
