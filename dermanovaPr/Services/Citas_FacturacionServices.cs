@@ -1,4 +1,5 @@
-﻿using Azure.Core.GeoJson;
+﻿using Azure;
+using Azure.Core.GeoJson;
 using dermanovaPr.Data;
 using dermanovaPr.Models;
 using dermanovaPr.Models.Dtos;
@@ -222,7 +223,79 @@ namespace dermanovaPr.Services
             return response;
         }
 
+        public async Task<GetResponses> GetCitasOrdenadasPorFecha()
+        {
+            var response = new GetResponses();
 
+            try
+            {
+                using (var context = _dbContextFactory.CreateDbContext())
+                {
+                    // Obtener y ordenar las citas directamente desde la entidad Citas
+                    var citasOrdenadas = await context.Citas
+                        .Include(c => c.Cliente) // Incluir la relación con Cliente
+                        .Include(c => c.Trabajador) // Incluir la relación con Trabajador
+                        .Include(c=> c.Padecimiento)
+                        .OrderBy(c => c.Fecha) // Ordenar por Fecha
+                        .ThenBy(c => c.Hora) // Ordenar por Hora dentro de la misma Fecha
+                        .ToListAsync();
+
+                    response.ListCitas = citasOrdenadas;
+                    response.IsSuccess = true;
+                    response.Message = "Citas ordenadas por fecha obtenidas con éxito.";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Message = $"Error al obtener citas ordenadas: {ex.Message}";
+                response.IsSuccess = false;
+            }
+
+            return response;
+        }
+
+        public async Task<BaseResponses> AddCita(CitasDTOS dTOS)
+        {
+          var responses = new BaseResponses();
+            try
+            {
+                using (var context = _dbContextFactory.CreateDbContext())
+                {
+                    context.Add(new Citas
+                    {
+
+                      Fecha = dTOS.Fecha,
+                      Hora = dTOS.Hora,
+                      ClienteId =dTOS.ClienteId,
+                      TrabajadorId = dTOS.TrabajadorId,
+                      PadecimientoId = dTOS.PadecimientoId,
+                      DiagnosticoId = dTOS.DiagnosticoId,
+                      RegaliaId = dTOS.DiagnosticoId
+
+
+                    }
+
+                    );
+                    var resutl = await context.SaveChangesAsync();
+                    if (resutl == 1)
+                    {
+                        responses.IsSuccess = true;
+                        responses.StatusCode = 200;
+                        responses.Message = " Cliente was added succesfully!";
+                    }
+                    else
+                    {
+                        responses.StatusCode = 400;
+                        responses.Message = "Error Please Check";
+                    }
+                }
+            }
+            catch
+            {
+                
+            }
+            return responses;
+        }
     }
 
 

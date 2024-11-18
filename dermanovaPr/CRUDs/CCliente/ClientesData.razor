@@ -1,20 +1,26 @@
-﻿@page "/ClientList"
+﻿@page "/clients"
 @using dermanovaPr.Models
 @using dermanovaPr.Models.Dtos
 @using dermanovaPr.Services
 @using dermanovaPr.Services.InterfaceServices
 @inject NavigationManager Nav_
+@inject IJSRuntime JSRuntime
+@inject IClientes services
 
-<!-- Botón para agregar un nuevo cliente -->
-<button class="btn btn-success" @onclick="GoToAddClient">Add New Client</button>
+<h3 class="text-center mt-3">Clients</h3>
 
-<!-- Botón para refrescar la lista de clientes -->
-<button class="btn btn-primary" @onclick="LoadClients">Refresh Clients</button>
+<!-- Botones para agregar cliente y refrescar la lista -->
+<div class="mb-3">
+    <button class="btn btn-success" @onclick="ShowAddClientModal">Add New Client</button>
+    <button class="btn btn-primary ms-2" @onclick="LoadClients">Refresh Clients</button>
+</div>
 
-<!-- Verificamos si la lista de clientes está vacía o nula -->
+<!-- Tabla de clientes -->
 @if (ClientL == null || !ClientL.Any())
 {
-    <h1>No Clients Found</h1>
+    <div class="alert alert-warning text-center">
+        <strong>No clients found.</strong>
+    </div>
 }
 else
 {
@@ -39,30 +45,171 @@ else
     </table>
 }
 
-@code {
-    [Inject] IClientes services { get; set; }
-    public List<Clientes>? ClientL = new List<Clientes>();
+<!-- Modal para agregar cliente -->
+<div class="modal fade @AddClientModalVisible" tabindex="-1" style="display:@AddClientModalDisplay;" role="dialog" aria-hidden="@(!AddClientModalVisibleBool)">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Client</h5>
+                <button type="button" class="btn-close" aria-label="Close" @onclick="HideAddClientModal"></button>
+            </div>
+            <div class="modal-body">
+                <EditForm Model="@dTOS" OnValidSubmit="AddClient">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <div class="mb-3">
+                        <label for="clientName" class="form-label">Client Name</label>
+                        <InputText @bind-Value="dTOS.Nombre" class="form-control" id="clientName" />
+                    </div>
 
-    // Método que se ejecuta cuando se inicializa el componente
+                    <div class="mb-3">
+                        <label for="cedula" class="form-label">Cedula</label>
+                        <InputText @bind-Value="CedulaInput.Cedula" class="form-control" id="cedula" />
+                        <span class="text-danger">@CedulaError</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="celular" class="form-label">Celular</label>
+                        <InputText @bind-Value="dTOS.Celular" class="form-control" id="celular" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </EditForm>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="HideAddClientModal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    // Variables para manejar el estado del modal
+    private string AddClientModalDisplay = "none";
+    private string AddClientModalVisible = "";
+    private bool AddClientModalVisibleBool = false;
+
+    // Lista de clientes y DTO para un nuevo cliente
+    public List<Clientes>? ClientL = new List<Clientes>();
+    public ClientesDTOS dTOS { get; set; } = new ClientesDTOS();
+    private ValidationC CedulaInput { get; set; } = new();
+    private string CedulaError;
+
+    // Método que se ejecuta al inicializar el componente
     protected override async Task OnInitializedAsync()
     {
         await LoadClients();
     }
 
-    // Método para cargar la lista de clientes
+    // Cargar clientes desde el servicio
     private async Task LoadClients()
     {
         if (services != null)
         {
             var response = await services.GetClientes();
-            ClientL = response.Listclientes;
+            ClientL = response?.Listclientes ?? new List<Clientes>();
         }
     }
 
-    // Método para redirigir al formulario de agregar cliente
-    private void GoToAddClient()
+    // Validación de cédula
+    private bool ValidarCedula(string cedula)
     {
-        Nav_.NavigateTo("/Clt"); // Redirigimos a la página para agregar cliente
+        string pattern = @"^\d{3}-\d{6}-\d{4}[A-Z]$";
+        var regex = new System.Text.RegularExpressions.Regex(pattern);
+
+        if (!regex.IsMatch(cedula))
+        {
+            return false;
+        }
+
+        string[] partes = cedula.Split('-');
+        string region = partes[0];
+        string fecha = partes[1];
+        string serie = partes[2].Substring(0, 4);
+
+        if (!int.TryParse(region, out int numeroRegion) || numeroRegion < 1 || numeroRegion > 999)
+        {
+            return false;
+        }
+
+        if (!EsFechaValida(fecha))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool EsFechaValida(string fecha)
+    {
+        if (fecha.Length != 6)
+        {
+            return false;
+        }
+
+        int dia = int.Parse(fecha.Substring(0, 2));
+        int mes = int.Parse(fecha.Substring(2, 2));
+        int año = int.Parse(fecha.Substring(4, 2)) + 1900;
+
+        try
+        {
+            DateTime fechaNacimiento = new DateTime(año, mes, dia);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    // Agregar cliente
+    private async Task AddClient()
+    {
+        if (!ValidarCedula(CedulaInput.Cedula))
+        {
+            CedulaError = "La cédula no es válida.";
+            return;
+        }
+
+        dTOS.Cedula = CedulaInput.Cedula;
+
+        if (services != null && dTOS != null)
+        {
+            var result = await services.AddClientes(dTOS);
+            if (result != null)
+            {
+                // Refrescar la lista de clientes y cerrar el modal
+                await LoadClients();
+                HideAddClientModal();
+                dTOS = new ClientesDTOS(); // Resetear el formulario
+            }
+            else
+            {
+                Console.WriteLine("Error adding client.");
+            }
+        }
+    }
+
+    // Mostrar el modal de agregar cliente
+    private void ShowAddClientModal()
+    {
+        AddClientModalDisplay = "block";
+        AddClientModalVisible = "show";
+        AddClientModalVisibleBool = true;
+    }
+
+    // Ocultar el modal de agregar cliente
+    private void HideAddClientModal()
+    {
+        AddClientModalDisplay = "none";
+        AddClientModalVisible = "";
+        AddClientModalVisibleBool = false;
+    }
+
+    private class ValidationC
+    {
+        public string Cedula { get; set; } = string.Empty;
     }
 }
+
 

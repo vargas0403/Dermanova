@@ -27,7 +27,7 @@ builder.Services.AddScoped<Icitas_FacturacionServices, Citas_FacturacionServices
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.ExpireTimeSpan = TimeSpan.FromSeconds(5);
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
     options.SlidingExpiration= true;
     options.Cookie.HttpOnly = true;
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;

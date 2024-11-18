@@ -7,13 +7,14 @@ namespace dermanovaPr.Services.InterfaceServices
     {
         public  Task<BaseResponses> AddCitaFac(FacturacionDTOS FCdTOS, List<DetallesDTOS> DTdtosList, CitasDTOS CTdtos);
 
+        public Task<BaseResponses> AddCita(CitasDTOS dTOS);
         public Task<GetResponses> GetCitas(int Id);
 
         public Task<GetResponses> GetCitaTotal();
 
         public Task<GetResponses> GetCitasAgrupadasPorFechaYHora();
 
-
+        public Task<GetResponses> GetCitasOrdenadasPorFecha();
 
     }
 }

@@ -95,8 +95,8 @@
     {
         var result = await services.AddPadecimientos(dTOS);
         // Aquí iría la lógica para agregar el padecimiento
-        Nav_.NavigateTo("/Padecimiento"); 
-
+        //Nav_.NavigateTo("/Padecimiento"); 
+        await LoadPadecimientos();
     }
 
     protected override async Task OnInitializedAsync()

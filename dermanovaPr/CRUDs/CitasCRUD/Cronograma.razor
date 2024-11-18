@@ -1,10 +1,17 @@
 ﻿@page "/cronograma"
+@using dermanovaPr.Models
+@using dermanovaPr.Models.Dtos
+@using dermanovaPr.Services
 @using dermanovaPr.Services.InterfaceServices
 @inject Icitas_FacturacionServices CitasService
+@inject IClientes ClienteService
 
-<h3 class="text-center mt-3">Citas por Fecha y Hora</h3>
+<h3 class="text-center mt-3">Citas Ordenadas por Fecha</h3>
 
-@if (CitasAgrupadas == null || !CitasAgrupadas.Any())
+<button class="btn btn-primary mb-3" @onclick="ShowModal">Agendar Nueva Cita</button>
+<button class="btn btn-success mb-3 ms-2" @onclick="ShowClienteModal">Agregar Cliente</button>
+
+@if (CitasOrdenadas == null || !CitasOrdenadas.Any())
 {
     <div class="alert alert-warning text-center">
         <strong>No hay citas disponibles.</strong>
@@ -12,80 +19,228 @@
 }
 else
 {
-    <div class="table-responsive">
-        <table class="table table-striped table-hover table-bordered">
-            <thead class="table-dark">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Trabajador</th>
+                <th scope="col">Padecimientos</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cita in CitasOrdenadas)
+            {
                 <tr>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Hora</th>
-                    <th scope="col">Cliente</th>
-                    <th scope="col">Trabajador</th>
-                    <th scope="col">ID Cita</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var fechaGroup in CitasAgrupadas)
-                {
-                    
-                        <!-- Columna Fecha -->
-                        <td rowspan="@fechaGroup.Horas.Sum(h => h.Citas.Count)" class="align-middle">@fechaGroup.Fecha.ToShortDateString()</td>
-
-                        @foreach (var horaGroup in fechaGroup.Horas)
-                        {
-                            <!-- Columna Hora -->
-                            <td rowspan="@horaGroup.Citas.Count" class="align-middle">@horaGroup.Hora</td>
-
-                            @foreach (var cita in horaGroup.Citas)
+                    <td>@cita.Fecha.ToShortDateString()</td>
+                    <td>@cita.Hora</td>
+                    <td>@cita.Cliente.Nombre</td>
+                    <td>@cita.Trabajador.Nombre</td>
+                    <td>
+                        <span class="@GetPadecimientoClass(cita.Padecimiento)">
+                            @if (cita.Padecimiento != null)
                             {
-                                <td>@cita.ClienteNombre</td>
-                                <td>@cita.TrabajadorNombre</td>
-                                <td>@cita.CitasId</td>
-                    
-                           
+                                @cita.Padecimiento.Name
                             }
-                        }
-                    }
-                }
-            </tbody>
-        </table>
-    </div>
+                            else
+                            {
+                                <span class="text-muted">Sin padecimientos</span>
+                            }
+                        </span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
+<!-- Modal para Agendar Cita -->
+<div class="modal fade @ModalVisible" tabindex="-1" style="display:@ModalDisplay;" role="dialog" aria-hidden="@(!ModalVisibleBool)">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agendar Nueva Cita</h5>
+                <button type="button" class="btn-close" aria-label="Close" @onclick="HideModal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha</label>
+                        <input type="date" class="form-control" id="fecha" @bind="NuevaCita.Fecha" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="hora" class="form-label">Hora</label>
+                        <input type="spam" class="form-control" id="hora" @bind="NuevaCita.Hora" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="cliente" class="form-label">Cliente ID</label>
+                        <input type="text" class="form-control" id="cliente" @bind="NuevaCita.CitasId" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label for="trabajadorId" class="form-label">Trabajador</label>
+                        <select id="trabajadorId" class="form-control" @bind="NuevaCita.TrabajadorId" >
+                            <option value="">Seleccione un trabajador</option>
+                            @foreach (var trabajador in ListTrabajadores)
+                            {
+                                <option value="@trabajador.TrabajadoresId">@trabajador.Nombre</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="padecimiento" class="form-label">Padecimiento</label>
+                        <select type="text" class="form-control" id="padecimiento" @bind="NuevaCita.PadecimientoId">
+                        <option value=""> seleccione padecimiento</option>/>
+                            @foreach( var padecimiento in ListaPdecimientos)
+                            {
+                                <option value="@padecimiento.PadecimientosId"> @padecimiento.Name</option>
+                            }
+                            </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="HideModal">Cerrar</button>
+                <button type="button" class="btn btn-primary" @onclick="AgendarCita">Agendar Cita</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Agregar Cliente -->
+<div class="modal fade @ClienteModalVisible" tabindex="-1" style="display:@ClienteModalDisplay;" role="dialog" aria-hidden="@(!ClienteModalVisibleBool)">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agregar Nuevo Cliente</h5>
+                <button type="button" class="btn-close" aria-label="Close" @onclick="HideClienteModal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="nombreCliente" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombreCliente" @bind="NuevoCliente.Nombre" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefonoCliente" class="form-label">Teléfono</label>
+                        <input type="text" class="form-control" id="telefonoCliente" @bind="NuevoCliente.Celular" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="correoCliente" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="correoCliente" @bind="NuevoCliente.Cedula" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="HideClienteModal">Cerrar</button>
+                <button type="button" class="btn btn-success" @onclick="AgregarCliente">Agregar Cliente</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @code {
-    private List<FechaGrupoDTO> CitasAgrupadas;
+    [Inject] ITrabajadores? trabajadoresServices { get; set; }
+    [Inject] IPrestacionesServices? prestacionesServices { get; set; }
+    [Inject] IPadecimientoServices padecimientoServices {get; set ; }
+    private List<Citas> CitasOrdenadas;
+    private CitasDTOS NuevaCita = new CitasDTOS();
+    private ClientesDTOS NuevoCliente = new ClientesDTOS();
+    private List<Clientes> ListCliente = new List<Clientes>();
+    private List<Trabajadores> ListTrabajadores = new List<Trabajadores>();
+    private List<Padecimientos> ListaPdecimientos = new List<Padecimientos>();
+    private string ModalDisplay = "none";
+    private string ModalVisible = "";
+    private bool ModalVisibleBool = false;
+
+    private string ClienteModalDisplay = "none";
+    private string ClienteModalVisible = "";
+    private bool ClienteModalVisibleBool = false;
 
     protected override async Task OnInitializedAsync()
     {
-        var response = await CitasService.GetCitasAgrupadasPorFechaYHora();
-
+        var ListTRAP = await trabajadoresServices.GetTrabajadores();
+        ListTrabajadores = ListTRAP?.trabjL ?? new List<Trabajadores>();
+        var ListPA = await padecimientoServices.GetPadecimientosAsync();
+        ListaPdecimientos = ListPA?.ListPadecimientos ?? new List<Padecimientos>();
+        var ListPRE = await prestacionesServices.GetPrestaciones();
+        
+        var response = await CitasService.GetCitasOrdenadasPorFecha();
+        
         if (response.IsSuccess)
         {
-            CitasAgrupadas = response.Data as List<FechaGrupoDTO>;
+            CitasOrdenadas = response.ListCitas.Cast<Citas>().ToList();
         }
         else
         {
-            CitasAgrupadas = new List<FechaGrupoDTO>();
+            CitasOrdenadas = new List<Citas>();
         }
     }
 
-    private class FechaGrupoDTO
+    private string GetPadecimientoClass(Padecimientos padecimiento)
     {
-        public DateTime Fecha { get; set; }
-        public List<HoraGrupoDTO> Horas { get; set; } = new();
+        return padecimiento != null ? "text-danger fw-bold" : "";
     }
 
-    private class HoraGrupoDTO
+    private void ShowModal()
     {
-        public string Hora { get; set; }
-        public List<CitaDTO> Citas { get; set; } = new();
+        ModalDisplay = "block";
+        ModalVisible = "show";
+        ModalVisibleBool = true;
     }
 
-    private class CitaDTO
+    private void HideModal()
     {
-        public int CitasId { get; set; }
-        public string ClienteNombre { get; set; }
-        public string TrabajadorNombre { get; set; }
-        public DateTime Fecha { get; set; }
-        public string Hora { get; set; }
+        ModalDisplay = "none";
+        ModalVisible = "";
+        ModalVisibleBool = false;
+    }
+
+    private async Task AgendarCita()
+    {
+        var response = await CitasService.AddCita(NuevaCita);
+
+        if (response.IsSuccess)
+        {
+            NuevaCita = new CitasDTOS();
+            HideModal();
+        }
+        else
+        {
+            Console.WriteLine("Error al agendar la cita: " + response.Message);
+        }
+    }
+
+    private void ShowClienteModal()
+    {
+        ClienteModalDisplay = "block";
+        ClienteModalVisible = "show";
+        ClienteModalVisibleBool = true;
+    }
+
+    private void HideClienteModal()
+    {
+        ClienteModalDisplay = "none";
+        ClienteModalVisible = "";
+        ClienteModalVisibleBool = false;
+    }
+
+    private async Task AgregarCliente()
+    {
+        var response = await ClienteService.AddClientes(NuevoCliente);
+
+        if (response.IsSuccess)
+        {
+            NuevaCita.CitasId = response.NewClienteId;
+
+            HideClienteModal();
+            ShowModal();
+
+            NuevoCliente = new ClientesDTOS();
+        }
+        else
+        {
+            Console.WriteLine("Error al agregar el cliente: " + response.Message);
+        }
     }
 }

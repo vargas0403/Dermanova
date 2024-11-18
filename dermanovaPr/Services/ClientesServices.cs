@@ -24,36 +24,43 @@ namespace dermanovaPr.Services
             {
                 using (var context = _dbContextFactory.CreateDbContext())
                 {
-                     context.Add(new Clientes
+                    // Crear una nueva instancia del cliente
+                    var nuevoCliente = new Clientes
                     {
-                        ClienteId = clientesDtos.ClienteId,
                         Cedula = clientesDtos.Cedula,
                         Celular = clientesDtos.Celular,
                         Nombre = clientesDtos.Nombre,
                         State = true
-                    }
-                     );
-                    var resutl = await context.SaveChangesAsync();
-                    if (resutl == 1)
+                    };
+
+                    // Agregar al contexto
+                    context.Clientes.Add(nuevoCliente);
+                    var result = await context.SaveChangesAsync();
+
+                    if (result == 1)
                     {
+                        // Obtener el ID recién generado
                         responses.StatusCode = 200;
-                        responses.Message = " Cliente was added succesfully!";
+                        responses.Message = "Cliente was added successfully!";
+                        responses.NewClienteId = nuevoCliente.ClienteId; // Asignar el ID generado
+                        responses.IsSuccess = true;
                     }
                     else
                     {
                         responses.StatusCode = 400;
                         responses.Message = "Error Please Check";
                     }
-                };
-
+                }
             }
             catch (Exception ex)
             {
                 responses.StatusCode = 500;
-
+                responses.Message = ex.Message; // Registrar el mensaje del error para depuración
             }
+
             return responses;
         }
+
         public async Task<GetResponses> CedulaExist(string Cedula)
         {
             var response = new GetResponses();
