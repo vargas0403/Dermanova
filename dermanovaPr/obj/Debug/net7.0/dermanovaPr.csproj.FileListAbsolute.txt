@@ -247,3 +247,4 @@ C:\Users\varga\OneDrive\Desktop\TESIS\dermanovaPr.sln\dermanovaPr\obj\Debug\net7
 C:\Users\varga\OneDrive\Desktop\TESIS\dermanovaPr.sln\dermanovaPr\obj\Debug\net7.0\dermanovaPr.pdb
 C:\Users\varga\OneDrive\Desktop\TESIS\dermanovaPr.sln\dermanovaPr\obj\Debug\net7.0\dermanovaPr.genruntimeconfig.cache
 C:\Users\varga\OneDrive\Desktop\TESIS\dermanovaPr.sln\dermanovaPr\obj\Debug\net7.0\ref\dermanovaPr.dll
+C:\Users\varga\OneDrive\Desktop\TESIS\dermanovaPr.sln\dermanovaPr\obj\Debug\net7.0\dermanovaPr.sourcelink.json
