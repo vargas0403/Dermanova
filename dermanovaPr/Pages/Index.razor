@@ -3,12 +3,40 @@
 
 
 @page "/"
+@using dermanovaPr.Models
 @using dermanovaPr.Services.InterfaceServices
  <AuthorizeView Roles="Operador">
-<button class="btn btn-success" @onclick="citas"> Citas</button>
+<button class="btn btn-success" @onclick="citas"> mis Citas</button>
 
 </AuthorizeView>
+ <AuthorizeView Roles="Administrador,Secretaria">
 <button class="btn btn-success" @onclick="total"> Citas</button>
+</AuthorizeView>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Cedula</th>
+            <th scope="col">Celular</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ClientL)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Cedula</td>
+                <td>@item.Celular</td>
+                <!-- Columna completa con onclick -->
+                <td @onclick="() => ShowModal(item.TrabajadoresId)" style="cursor: pointer; color: blue;">
+                    Nueva Cita
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
 
 
 
@@ -16,9 +44,22 @@
 
 @code
 {
- 
+    [Inject] ITrabajadores? trabajadoresServices { get; set; }
 
+    private List<Trabajadores> ClientL = new List<Trabajadores>();
 
+    private void ShowModal( int id )
+    {
+        //ModalDisplay = "block";
+        // ModalVisible = "show";
+        //ModalVisibleBool = true;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var ListTRAP = await trabajadoresServices.GetTrabajadores();
+        ClientL = ListTRAP?.trabjL ?? new List<Trabajadores>();
+    }
 
     private void citas()
     {

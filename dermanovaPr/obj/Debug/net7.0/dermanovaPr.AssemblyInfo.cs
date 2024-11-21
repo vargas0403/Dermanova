@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("dermanovaPr")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0899f594ce0b03b30e4fcf550cfa8770baf733f1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d8c39cd4426722b02a71143c264bf2fd82feac2a")]
 [assembly: System.Reflection.AssemblyProductAttribute("dermanovaPr")]
 [assembly: System.Reflection.AssemblyTitleAttribute("dermanovaPr")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

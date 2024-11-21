@@ -1,4 +1,5 @@
-﻿using dermanovaPr.Models.Dtos;
+﻿using dermanovaPr.Models;
+using dermanovaPr.Models.Dtos;
 using dermanovaPr.Models.Responses;
 
 namespace dermanovaPr.Services.InterfaceServices
@@ -15,6 +16,9 @@ namespace dermanovaPr.Services.InterfaceServices
         public Task<GetResponses> GetCitasAgrupadasPorFechaYHora();
 
         public Task<GetResponses> GetCitasOrdenadasPorFecha();
+        public Task<BaseResponses> UpdateCita(Citas citas);
+        public Task<BaseResponses> AddFacturaAndUpdateCita(FacturacionDTOS FCdTOS, List<DetallesDTOS> DTdtosList, int citaId);
+
 
     }
 }

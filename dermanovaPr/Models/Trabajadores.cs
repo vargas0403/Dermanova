@@ -25,11 +25,11 @@ namespace dermanovaPr.Models
         [Required]
         public string Puesto { get; set; }
         // Llave foránea al ID de IdentityUser
-        [Required]
-        public string UserId { get; set; }
+        
+        public string? UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]  // Vincula la propiedad de navegación User con UserId
-        public IdentityUser User { get; set; }
+        public IdentityUser? User { get; set; }
         [Required]
         public bool State { get; set; }
 

@@ -20,6 +20,8 @@ namespace dermanovaPr.Models
         public DateTime Fecha { get; set; }
 
         [Required]
+        public  string tipo {get ; set ;}
+        [Required]
         public TimeSpan Hora { get; set; }
 
         // Conexión con Clientes

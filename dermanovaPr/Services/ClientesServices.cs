@@ -128,6 +128,39 @@ namespace dermanovaPr.Services
             return response;
         }
 
+        public async Task<GetResponses> ClienteExist(int id)
+        {
+            var responses = new GetResponses();
+            try
+            {
+                using (var context = _dbContextFactory.CreateDbContext())
+                {
+                    // Obtener cliente por ID
+                    var cliente = await context.Clientes.FirstOrDefaultAsync(c => c.ClienteId == id);
+
+                    if (cliente != null)
+                    {
+                        responses.StatusCode = 200;
+                        responses.client = cliente;
+                        //new List<Clientes> { cliente }; // Envuelve en una lista si es necesario
+                        responses .IsSuccess = true;
+                    }
+                    else
+                    {
+                        responses.StatusCode = 404;
+                        responses.Message = "Cliente no encontrado";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                responses.StatusCode = 500; // Código para errores internos
+                responses.Message = $"Error al buscar el cliente: {ex.Message}";
+            }
+
+            return responses;
+        }
+
         public async Task<GetResponses> GetClientes()
         {
             var response = new GetResponses();

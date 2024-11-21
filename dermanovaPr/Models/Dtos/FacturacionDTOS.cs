@@ -13,7 +13,9 @@ namespace dermanovaPr.Models.Dtos
 
         public decimal Total { get; set; } // Total como propiedad regular
 
-      
+        public List<DetalleFactura>? Detalles { get; set; } = new List<DetalleFactura>();
+        public List<DetallesDTOS> DetallesDTOS { get; set; } = new List<DetallesDTOS>();
+
         public bool State { get; set; }
 
     

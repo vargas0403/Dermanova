@@ -95,7 +95,7 @@ namespace dermanovaPr.Areas.Identity.Pages.Account
                             else
                             {
 
-                                await _userManager.AddToRoleAsync(identity, "Trabajadores");
+                                await _userManager.AddToRoleAsync(identity, "Secretaria");
                             };
 
 

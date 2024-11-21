@@ -22,21 +22,31 @@ else
     <table class="table table-striped table-hover table-bordered">
         <thead class="table-dark">
             <tr>
+                <th scope="col">ID</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Hora</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Trabajador</th>
                 <th scope="col">Padecimientos</th>
+                <th scope="col">tipo</th>
+                <th scope="col">Factura</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var cita in CitasOrdenadas)
             {
                 <tr>
+                    <td>@cita.CitasId</td>
                     <td>@cita.Fecha.ToShortDateString()</td>
                     <td>@cita.Hora</td>
                     <td>@cita.Cliente.Nombre</td>
                     <td>@cita.Trabajador.Nombre</td>
+                    <td>@cita.tipo</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => ShowFacturaModal(cita.CitasId)">factura</button>
+
+                    </td>
+
                     <td>
                         <span class="@GetPadecimientoClass(cita.Padecimiento)">
                             @if (cita.Padecimiento != null)
@@ -87,6 +97,16 @@ else
                             }
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label for="trabajadorId" class="form-label">Trabajador</label>
+                        <select id="trabajadorId" class="form-control" @bind="NuevaCita.tipo">
+                            <option value="">Seleccione un trabajador</option>
+                           <option value="Estetica">Estica </option>
+                           <option value="Dermatologica">Dermatologica</option>
+                        </select>
+                    </div>
+
+
                     <div class="mb-3">
                         <label for="padecimiento" class="form-label">Padecimiento</label>
                         <select type="text" class="form-control" id="padecimiento" @bind="NuevaCita.PadecimientoId">
@@ -139,16 +159,101 @@ else
     </div>
 </div>
 
+<!-- Modal para asociar una factura a una cita existente -->
+ <div class="modal fade @FacturaModalVisible" tabindex="-1" style="display:@FacturaModalDisplay;" role="dialog" aria-hidden="@(!FacturaModalVisibleBool)">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Asociar Factura a Cita</h5>
+                <button type="button" class="btn-close" aria-label="Close" @onclick="HideFacturaModal"></button>
+            </div>
+            <div class="modal-body">
+           
+                <EditForm Model="NuevaCita" OnValidSubmit="SaveCitaWithFactura">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label"></label>
+                        <InputNumber id="fecha" class="form-control" @bind-Value="NuevaCita.CitasId" />
+                    </div>
+                    <div class="mb-3">
+                        <h5>Información del Cliente</h5>
+                        <p><strong>Nombre:</strong> @unicCliente.Nombre</p>
+                        <p><strong>Teléfono:</strong> @unicCliente.Celular</p>
+                        <p><strong>Cedula:</strong> @unicCliente.Cedula</p>
+                    </div>
+                    <h4>Servicios</h4>
+                    @foreach (var detalle in DetallesFactura)
+                    {
+                        <div class="mb-3">
+                            <label for="prestacionesId" class="form-label">Prestación</label>
+                            <select id="prestacionesId" class="form-control" @onchange="(e) => UpdatePrecio(detalle, e)">
+                                <option value="">Seleccione una prestación</option>
+                                @foreach (var prestacion in ListaPrestaciones)
+                                {
+                                    <option value="@prestacion.PrestacionesId">@prestacion.Name</option>
+                                }
+                            </select>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cantidad" class="form-label">Cantidad</label>
+                            <InputNumber id="cantidad" class="form-control" @bind-Value="detalle.Cantidad" readonly />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="precio" class="form-label">Precio Unitario</label>
+                            <InputNumber id="precio" class="form-control" @bind-Value="detalle.Precio" readonly />
+                        </div>
+
+                        <button type="button" class="btn btn-danger" @onclick="() => RemoveDetalle(detalle)">Eliminar Servicio</button>
+                        <hr />
+                    }
+
+                    <button type="button" class="btn btn-primary" @onclick="AddDetalle">Añadir Servicio</button>
+
+                    <button type="submit" class="btn btn-success mt-4">Guardar Cita y Factura</button>
+                </EditForm>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="HideFacturaModal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+ 
 @code {
+
+    private string FacturaModalDisplay = "none";
+    private string FacturaModalVisible = "";
+    private bool FacturaModalVisibleBool = false;
+    private int? SelectedPrestacionId;
+    private int pp;
+    private string horaInput { get; set; } = "00:00"; // Valor predeterminado en formato HH:mm
+
+
+    // Factura y detalles
+    private FacturacionDTOS FacturaData = new FacturacionDTOS();
+    private List<DetallesDTOS> DetallesFactura = new List<DetallesDTOS>();
+    private DetallesDTOS DetalleActual = new DetallesDTOS();
+    private List<Prestaciones> ListaPrestaciones = new List<Prestaciones>();
     [Inject] ITrabajadores? trabajadoresServices { get; set; }
     [Inject] IPrestacionesServices? prestacionesServices { get; set; }
-    [Inject] IPadecimientoServices padecimientoServices {get; set ; }
-    private List<Citas> CitasOrdenadas;
+    [Inject] IPadecimientoServices? padecimientoServices {get; set ; }
+    [Inject] Icitas_FacturacionServices? FacturacionService { get; set; }
+
+    private List<Citas> CitasOrdenadas = new List<Citas>();
     private CitasDTOS NuevaCita = new CitasDTOS();
     private ClientesDTOS NuevoCliente = new ClientesDTOS();
     private List<Clientes> ListCliente = new List<Clientes>();
+    private Clientes unicCliente = new Clientes();
     private List<Trabajadores> ListTrabajadores = new List<Trabajadores>();
     private List<Padecimientos> ListaPdecimientos = new List<Padecimientos>();
+    private List<Prestaciones> ListPrestaciones = new List<Prestaciones>();
     private string ModalDisplay = "none";
     private string ModalVisible = "";
     private bool ModalVisibleBool = false;
@@ -164,9 +269,10 @@ else
         var ListPA = await padecimientoServices.GetPadecimientosAsync();
         ListaPdecimientos = ListPA?.ListPadecimientos ?? new List<Padecimientos>();
         var ListPRE = await prestacionesServices.GetPrestaciones();
-        
+        ListaPrestaciones = ListPRE.ListPres ?? new List<Prestaciones>();
+
         var response = await CitasService.GetCitasOrdenadasPorFecha();
-        
+
         if (response.IsSuccess)
         {
             CitasOrdenadas = response.ListCitas.Cast<Citas>().ToList();
@@ -243,4 +349,105 @@ else
             Console.WriteLine("Error al agregar el cliente: " + response.Message);
         }
     }
+
+
+    // Mostrar modal
+    private async Task ShowFacturaModal(int id)
+    {
+        // Obtener la cita seleccionada
+        var cita = CitasOrdenadas.FirstOrDefault(c => c.CitasId == id);
+        if (cita != null)
+        {
+            // Obtener la información del cliente asociado a la cita
+            var clienteResponse = await ClienteService.ClienteExist(cita.ClienteId);
+            if (clienteResponse != null && clienteResponse.IsSuccess)
+            {
+                unicCliente = clienteResponse.client;/* ?.FirstOrDefault() ?? new Clientes { Nombre = "Información no disponible" }; */
+            }
+            else
+            {
+                unicCliente = new Clientes { Nombre = "Información no disponible" };
+            }
+        }
+        else
+        {
+            Console.WriteLine("Cita no encontrada para el ID proporcionado.");
+            return;
+        }
+
+        FacturaModalDisplay = "block";
+        FacturaModalVisible = "show";
+        FacturaModalVisibleBool = true;
+    }
+
+    // Ocultar modal
+    private void HideFacturaModal()
+    {
+        FacturaModalDisplay = "none";
+        FacturaModalVisible = "";
+        FacturaModalVisibleBool = false;
+    }
+
+    private async Task SaveCitaWithFactura()
+    {
+        // Convertir `horaInput` en `TimeSpan`
+        if (TimeSpan.TryParse(horaInput, out TimeSpan horaParsed))
+        {
+            NuevaCita.Hora = horaParsed;
+        }
+
+        var factura = new FacturacionDTOS
+            {
+                Fecha = DateTime.Now,
+                State = true
+            };
+
+        pp = NuevaCita.CitasId;
+        // Guardar factura y cita
+        await CitasService.AddFacturaAndUpdateCita(factura, DetallesFactura, NuevaCita.CitasId);
+    }
+    private void AddDetalle()
+    {
+        DetallesFactura.Add(new DetallesDTOS { Cantidad = 1, Precio = 0 });
+    }
+
+    private void RemoveDetalle(DetallesDTOS detalle)
+    {
+        DetallesFactura.Remove(detalle);
+    }
+    private void UpdatePrecio(DetallesDTOS detalle, ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int prestacionId))
+        {
+            var prestacionSeleccionada = ListaPrestaciones.FirstOrDefault(p => p.PrestacionesId == prestacionId);
+
+            if (prestacionSeleccionada != null)
+            {
+                detalle.PrestacionesId = prestacionId;
+                detalle.Precio = prestacionSeleccionada.costo;
+               
+                // Agregar a la lista de detalles si no está ya presente
+                var detalleExistente = DetallesFactura.FirstOrDefault(d => d.PrestacionesId == prestacionId);
+
+                if (detalleExistente == null)
+                {
+                    DetallesFactura.Add(detalle);
+                }
+                else
+                {
+                    detalleExistente.Precio = prestacionSeleccionada.costo;
+             }
+
+                Console.WriteLine($"Prestación: {prestacionSeleccionada.Name}, Costo: {prestacionSeleccionada.costo}");
+            }
+        }
+        else
+        {
+            Console.WriteLine("ID de prestación no válido.");
+        }
+    }
+
+
+
 }
+

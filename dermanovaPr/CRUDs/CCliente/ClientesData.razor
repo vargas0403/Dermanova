@@ -30,6 +30,8 @@ else
                 <th scope="col">Nombre</th>
                 <th scope="col">Cedula</th>
                 <th scope="col">Celular</th>
+
+                <th scope ="col"> opciones </th>
             </tr>
         </thead>
         <tbody>
@@ -39,6 +41,10 @@ else
                     <td>@item.Nombre</td>
                     <td>@item.Cedula</td>
                     <td>@item.Celular</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => ShowModal(item.ClienteId)">NuevaCita</button>
+
+                    </td>
                 </tr>
             }
         </tbody>
@@ -83,22 +89,97 @@ else
     </div>
 </div>
 
+
+<!-- Modal para Agendar Cita -->
+<div class="modal fade @ModalVisible" tabindex="-1" style="display:@ModalDisplay;" role="dialog" aria-hidden="@(!ModalVisibleBool)">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agendar Nueva Cita</h5>
+                <button type="button" class="btn-close" aria-label="Close" @onclick="HideModal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha</label>
+                        <input type="date" class="form-control" id="fecha" @bind="NuevaCita.Fecha" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="hora" class="form-label">Hora</label>
+                        <input type="spam" class="form-control" id="hora" @bind="NuevaCita.Hora" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="cliente" class="form-label">Cliente ID</label>
+                        <input type="text" class="form-control" id="cliente" @bind="NuevaCita.CitasId" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label for="trabajadorId" class="form-label">Trabajador</label>
+                        <select id="trabajadorId" class="form-control" @bind="NuevaCita.tipo">
+                            <option value="">Seleccione un trabajador</option>
+                            <option value="Estetica">Estica </option>
+                            <option value="Dermatologica">Dermatologica</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="trabajadorId" class="form-label">Trabajador</label>
+                        <select id="trabajadorId" class="form-control" @bind="NuevaCita.TrabajadorId">
+                            <option value="">Seleccione un trabajador</option>
+                            @foreach (var trabajador in ListTrabajadores)
+                            {
+                                <option value="@trabajador.TrabajadoresId">@trabajador.Nombre</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="padecimiento" class="form-label">Padecimiento</label>
+                        <select type="text" class="form-control" id="padecimiento" @bind="NuevaCita.PadecimientoId">
+                            <option value=""> seleccione padecimiento</option>/>
+                            @foreach (var padecimiento in ListaPdecimientos)
+                            {
+                                <option value="@padecimiento.PadecimientosId"> @padecimiento.Name</option>
+                            }
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="HideModal">Cerrar</button>
+                <button type="button" class="btn btn-primary" @onclick="AgendarCita">Agendar Cita</button>
+            </div>
+        </div>
+    </div>
+</div>
 @code {
+    [Inject] Icitas_FacturacionServices CitasService { get; set; }
+    [Inject] ITrabajadores? trabajadoresServices { get; set; }
+    [Inject] IPrestacionesServices? prestacionesServices { get; set; }
+    [Inject] IPadecimientoServices? padecimientoServices { get; set; }
     // Variables para manejar el estado del modal
     private string AddClientModalDisplay = "none";
     private string AddClientModalVisible = "";
     private bool AddClientModalVisibleBool = false;
-
+    private int pp { get; set; }
     // Lista de clientes y DTO para un nuevo cliente
     public List<Clientes>? ClientL = new List<Clientes>();
     public ClientesDTOS dTOS { get; set; } = new ClientesDTOS();
     private ValidationC CedulaInput { get; set; } = new();
     private string CedulaError;
-
+    private List<Trabajadores> ListTrabajadores = new List<Trabajadores>();
+    private List<Padecimientos> ListaPdecimientos = new List<Padecimientos>();
+    private CitasDTOS NuevaCita = new CitasDTOS();
+    private string ModalDisplay = "none";
+    private string ModalVisible = "";
+    private bool ModalVisibleBool = false;
     // Método que se ejecuta al inicializar el componente
     protected override async Task OnInitializedAsync()
     {
+        var ListTRAP = await trabajadoresServices.GetTrabajadores();
+        ListTrabajadores = ListTRAP?.trabjL ?? new List<Trabajadores>();
+        var ListPA = await padecimientoServices.GetPadecimientosAsync();
+        ListaPdecimientos = ListPA?.ListPadecimientos ?? new List<Padecimientos>();
+        var ListPRE = await prestacionesServices.GetPrestaciones();
         await LoadClients();
+
     }
 
     // Cargar clientes desde el servicio
@@ -162,6 +243,39 @@ else
         }
     }
 
+
+    private void ShowModal(int Idcliente)
+    {
+        ModalDisplay = "block";
+        ModalVisible = "show";
+        ModalVisibleBool = true;
+        pp = Idcliente;
+        NuevaCita.ClienteId = pp;
+    }
+
+    private void HideModal()
+    {
+        ModalDisplay = "none";
+        ModalVisible = "";
+        ModalVisibleBool = false;
+    }
+    // agregar cita 
+    private async Task AgendarCita()
+    {
+        pp = NuevaCita.ClienteId;
+
+        var response = await CitasService.AddCita(NuevaCita);
+
+        if (response.IsSuccess)
+        {
+            NuevaCita = new CitasDTOS();
+            HideModal();
+        }
+        else
+        {
+            Console.WriteLine("Error al agendar la cita: " + response.Message);
+        }
+    }
     // Agregar cliente
     private async Task AddClient()
     {

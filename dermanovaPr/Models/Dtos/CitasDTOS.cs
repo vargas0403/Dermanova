@@ -28,12 +28,15 @@ namespace dermanovaPr.Models.Dtos
         //    public bool State { get; set; }
         //    public List<DetallesDTOS> DetallesFactura { get; set; } = new();
 
-      
-           // public int CitasId { get; set; }
-            public DateTime Fecha { get; set; }
-            public TimeSpan Hora { get; set; }
-           // public int ClienteId { get; set; }
-            public string ClienteNombre { get; set; }
+
+        // public int CitasId { get; set; }
+        public DateTime Fecha { get; set; } = DateTime.Now;
+            public TimeSpan Hora { get; set; } = DateTime.Now.TimeOfDay;
+
+        public string tipo { get; set; }
+
+        // public int ClienteId { get; set; }
+        public string ClienteNombre { get; set; }
             public string padecimientoNombre { get; set; }
             
             public string TrabajadorNombre { get; set; }

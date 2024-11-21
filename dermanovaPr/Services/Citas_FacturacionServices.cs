@@ -72,6 +72,7 @@ namespace dermanovaPr.Services
                         RegaliaId = CTdtos.RegaliaId,
                         DiagnosticoId = CTdtos.DiagnosticoId,
                         PadecimientoId = CTdtos.PadecimientoId,
+                        tipo = CTdtos.tipo,
                         FacturaId = factura.FacturaId, // Relaciona la cita con la factura
                         State = true
                     };
@@ -89,6 +90,79 @@ namespace dermanovaPr.Services
             {
                 // response.IsSuccess = false;
                 response.Message = $"Error al guardar factura y cita: {ex.Message}";
+            }
+
+            return response;
+        }
+
+        public async Task<BaseResponses> AddFacturaAndUpdateCita(FacturacionDTOS FCdTOS, List<DetallesDTOS> DTdtosList, int citaId)
+        {
+            var response = new BaseResponses();
+
+            try
+            {
+                using (var context = _dbContextFactory.CreateDbContext())
+                {
+                    // Crear la entidad de Factura
+                    var factura = new Facturaciones
+                    {
+                        Fecha = FCdTOS.Fecha,
+                        State = FCdTOS.State
+                    };
+
+                    context.Facturaciones.Add(factura);
+                    await context.SaveChangesAsync(); // Guardar para obtener el ID de la factura
+
+                    // Verificar que el ID de la factura se haya generado correctamente
+                    if (factura.FacturaId == 0)
+                    {
+                        response.Message = "Error al generar la factura.";
+                        return response;
+                    }
+
+                    // Crear los detalles de la factura y asociarlos con el FacturaId
+                    foreach (var detalleDto in DTdtosList)
+                    {
+                        var detalleFactura = new DetalleFactura
+                        {
+                            PrestacionesId = detalleDto.PrestacionesId,
+                            Cantidad = detalleDto.Cantidad,
+                            Precio = detalleDto.Precio,
+                            State = true,
+                            FacturacionesId = factura.FacturaId // Asociar el ID de la factura
+                        };
+                        context.DetalleFacturas.Add(detalleFactura);
+                    }
+
+                    await context.SaveChangesAsync(); // Guardar los detalles de la factura
+
+                    // Calcular el total de la factura y actualizar
+                    factura.Total = DTdtosList.Sum(d => d.Cantidad * d.Precio);
+                    context.Facturaciones.Update(factura);
+                    await context.SaveChangesAsync(); // Guardar el total actualizado
+
+                    // Buscar la cita existente por su ID
+                    var cita = await context.Citas.FindAsync(citaId);
+                    if (cita == null)
+                    {
+                        response.Message = "Cita no encontrada.";
+                        return response;
+                    }
+
+                    // Actualizar el campo FacturaId en la cita
+                    cita.FacturaId = factura.FacturaId;
+                    context.Citas.Update(cita);
+                    await context.SaveChangesAsync(); // Guardar los cambios en la cita
+
+                    // Responder con éxito
+                    response.IsSuccess = true;
+                    response.Message = "Factura, detalles y cita actualizada exitosamente";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = $"Error al guardar factura, detalles y actualizar cita: {ex.Message}";
             }
 
             return response;
@@ -115,7 +189,9 @@ namespace dermanovaPr.Services
                             Fecha = c.Fecha,
                             Hora = c.Hora,
                             ClienteNombre = c.Cliente.Nombre,
-                           padecimientoNombre = c.Padecimiento.Name
+                           padecimientoNombre = c.Padecimiento.Name,
+                           tipo= c.tipo
+                           
                           
                         })
                         .ToListAsync();
@@ -270,7 +346,8 @@ namespace dermanovaPr.Services
                       TrabajadorId = dTOS.TrabajadorId,
                       PadecimientoId = dTOS.PadecimientoId,
                       DiagnosticoId = dTOS.DiagnosticoId,
-                      RegaliaId = dTOS.DiagnosticoId
+                      RegaliaId = dTOS.RegaliaId,
+                      tipo = dTOS.tipo
 
 
                     }
@@ -295,6 +372,30 @@ namespace dermanovaPr.Services
                 
             }
             return responses;
+        }
+
+        public async Task<BaseResponses> UpdateCita(Citas citas)
+        {
+            var response = new BaseResponses();
+            try
+            {
+                using (var context = _dbContextFactory.CreateDbContext())
+                {
+                    context.Update(citas);
+                    response.StatusCode = 200;
+                    response.Message = "Success";
+                    response.IsSuccess = true;
+                    var result = await context.SaveChangesAsync();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                response.StatusCode = 500;
+                response.Message = "Error Deleting Device" + ex.Message;
+            }
+            return response;
         }
     }
 

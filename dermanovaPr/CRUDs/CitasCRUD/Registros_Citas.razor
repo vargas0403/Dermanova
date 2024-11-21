@@ -32,6 +32,14 @@
             }
         </InputSelect>
     </div>
+    <div class="mb-3">
+        <label for="trabajadorId" class="form-label">Trabajador</label>
+        <InputSelect id="trabajadorId" class="form-control" @bind-Value="CitaForm.TrabajadorId">
+            <option value="">Seleccione un trabajador</option>
+            <option value="Estetica">Estica </option>
+            <option value="Dermatologica">Dermatologica</option>
+        </InputSelect>
+    </div>
 
     <div class="mb-3">
         <label for="trabajadorId" class="form-label">Trabajador</label>

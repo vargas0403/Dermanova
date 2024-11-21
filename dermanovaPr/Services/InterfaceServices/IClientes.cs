@@ -9,5 +9,7 @@ namespace dermanovaPr.Services.InterfaceServices
         public Task<BaseResponses> AddClientes(ClientesDTOS clientesDtos);
         public Task<GetResponses> CedulaExist(string Cedula);
         public Task<GetResponses> CelularExist(string Celular);
+
+        public Task<GetResponses> ClienteExist(int Id);
     }
 }
