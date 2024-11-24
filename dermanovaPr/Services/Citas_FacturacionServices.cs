@@ -397,6 +397,83 @@ namespace dermanovaPr.Services
             }
             return response;
         }
+
+        public async Task<BaseResponses> UpdateDig(int id, int diagnosticoId)
+        {
+            var response = new BaseResponses();
+            try
+            {
+                using (var context = _dbContextFactory.CreateDbContext())
+                {
+                    // Buscar la cita por ID
+                    var result = await context.Citas.FirstOrDefaultAsync(c => c.CitasId == id);
+
+                    if (result != null)
+                    {
+                        // Actualizar el diagnóstico de la cita
+                        result.DiagnosticoId = diagnosticoId;
+
+                        // Guardar los cambios en la base de datos
+                        await context.SaveChangesAsync();
+
+                        response.StatusCode = 200; // Éxito
+                        response.Message = "Diagnóstico actualizado correctamente";
+                    }
+                    else
+                    {
+                        response.StatusCode = 404; // No encontrado
+                        response.Message = "Cita no encontrada";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.StatusCode = 500; // Error interno del servidor
+                response.Message = "Error al actualizar el diagnóstico: " + ex.Message;
+            }
+
+            return response;
+        }
+
+        public async Task<GetResponses> GetCitasId(int id)
+        {
+
+            var response = new GetResponses();
+
+            try
+            {
+                using (var context = _dbContextFactory.CreateDbContext())
+                {
+                    // Obtener las citas directamente con el trabajador asociado
+                    var citas = await context.Citas.FirstOrDefaultAsync(c=> c.CitasId == id);
+
+
+                    if (citas == null)
+                    {
+                        response.Message = "No hay citas registradas para este trabajador.";
+                        return response;
+                    }
+                    else
+                    {
+
+                        // Configurar la respuesta
+                        response.citaIDSS = citas.CitasId;
+                        response.Message = "Citas obtenidas exitosamente.";
+                        response.IsSuccess = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                response.Message = $"Error al obtener citas: {ex.Message}";
+                response.IsSuccess = false;
+            }
+
+            return response;
+        }
+
+    }
     }
 
 
@@ -421,4 +498,4 @@ namespace dermanovaPr.Services
         public DateTime Fecha { get; set; }
     }
 
-}
+

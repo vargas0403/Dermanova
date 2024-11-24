@@ -17,8 +17,11 @@ namespace dermanovaPr.Services.InterfaceServices
 
         public Task<GetResponses> GetCitasOrdenadasPorFecha();
         public Task<BaseResponses> UpdateCita(Citas citas);
+        public Task<BaseResponses> UpdateDig(int id, int diagnosticoId);
+
         public Task<BaseResponses> AddFacturaAndUpdateCita(FacturacionDTOS FCdTOS, List<DetallesDTOS> DTdtosList, int citaId);
 
+        public Task<GetResponses> GetCitasId(int id);
 
     }
 }

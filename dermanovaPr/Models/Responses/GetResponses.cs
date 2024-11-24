@@ -20,7 +20,7 @@
 
         public List<Padecimientos> ListPadecimientos { get; set; }
         public Padecimientos? Padecimientos { get; set; }
-
+        public int citaIDSS { get; set; }
         public  Citas?  Cits { get; set; }
         public List<Citas>? ListCitas { get; set; }  
         public DetalleFactura? DFT { get; set; }

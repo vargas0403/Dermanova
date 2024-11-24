@@ -14,7 +14,7 @@ namespace dermanovaPr.Services
         public ClientesServices(IDbContextFactory<DataContext> dbContextFactory)
         {
             _dbContextFactory = dbContextFactory;
-            
+
         }
 
         public async Task<BaseResponses> AddClientes(ClientesDTOS clientesDtos)
@@ -61,6 +61,50 @@ namespace dermanovaPr.Services
             return responses;
         }
 
+        public async Task<BaseResponses> AddDiagnostico(DiagnosticoDTOS dTOS)
+        {
+
+            var responses = new BaseResponses();
+            try
+            {
+                using (var context = _dbContextFactory.CreateDbContext())
+                {
+                    var diag = new Diagnosticos
+                    {
+                        DiagnosticosId = dTOS.DiagnosticosId,
+                        Observaciobes = dTOS.Observaciobes,
+                        Padecimientos = dTOS.Padecimientos,
+                        State = true
+
+                    };
+                    context.Diagnosticos.Add(diag);
+                    var result = await context.SaveChangesAsync();
+
+                    if (result == 1)
+                    {
+                        // Obtener el ID recién generado
+                        responses.StatusCode = 200;
+                        responses.Message = "Diagnostico was added successfully!";
+                        responses.IsSuccess = true;
+                        responses.NewDiagnosticoId = diag.DiagnosticosId;
+                    }
+                    else
+                    {
+                        responses.StatusCode = 400;
+                        responses.Message = "Error Please Check";
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                responses.StatusCode = 500;
+                responses.Message = ex.Message; // Registrar el mensaje del error para depuración
+            }
+
+            return responses;
+        }
+    
         public async Task<GetResponses> CedulaExist(string Cedula)
         {
             var response = new GetResponses();

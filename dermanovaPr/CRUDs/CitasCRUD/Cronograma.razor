@@ -43,7 +43,19 @@ else
                     <td>@cita.Trabajador.Nombre</td>
                     <td>@cita.tipo</td>
                     <td>
-                        <button class="btn btn-primary" @onclick="() => ShowFacturaModal(cita.CitasId)">factura</button>
+                        @if (cita.tipo == "Estetica")
+                        {
+                            <button class="btn btn-success" @onclick="() => ShowFacturaModal(cita.CitasId)">Factura</button>
+                        }
+                        else if (cita.tipo == "Dermatologica")
+                        {
+                        <td>
+                            <button class="btn btn-info" @onclick="() => ShowClienteDiagnosticoModal(cita.CitasId,cita.ClienteId)">Diagnóstico</button>
+                        </td>
+
+                        }
+                        @*     <button class="btn btn-primary" @onclick="() => ShowFacturaModal(cita.CitasId)">factura</button>
+                      *@   
 
                     </td>
 
@@ -226,13 +238,61 @@ else
 </div>
  
  
+
+<!-- Modal para Mostrar Información del Cliente y Agregar Diagnóstico -->
+<div class="modal fade @ClienteDiagnosticoModalVisible" tabindex="-1" style="display:@ClienteDiagnosticoModalDisplay;" role="dialog" aria-hidden="@(!ClienteDiagnosticoModalVisibleBool)">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Información del Cliente y Diagnóstico</h5>
+                <button type="button" class="btn-close" aria-label="Close" @onclick="HideClienteDiagnosticoModal"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h5>Información del Cliente</h5>
+                    <p><strong>Nombre:</strong> @unicCliente.Nombre</p>
+                    <p><strong>Teléfono:</strong> @unicCliente.Celular</p>
+                    <p><strong>Cédula:</strong> @unicCliente.Cedula</p>
+                </div>
+                <hr />
+                <div>
+                    <h5>Agregar Diagnóstico</h5>
+                    <form>
+                        <div class="mb-3">
+                            <label for="diagnostico" class="form-label">Diagnóstico</label>
+                            <textarea id="diagnostico" class="form-control" @bind="NuevoDiagnostico"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="diagnostico" class="form-label">padecimientos</label>
+                            <textarea id="diagnostico" class="form-control" @bind="Padetms"></textarea>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="HideClienteDiagnosticoModal">Cerrar</button>
+                <button type="button" class="btn btn-primary" @onclick="GuardarDiagnostico">Guardar Diagnóstico</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @code {
 
+    private string ClienteDiagnosticoModalDisplay = "none";
+    private string ClienteDiagnosticoModalVisible = "";
+    private bool ClienteDiagnosticoModalVisibleBool = false;
+
+    private string NuevoDiagnostico = "";
+    private string Padetms = "";
     private string FacturaModalDisplay = "none";
     private string FacturaModalVisible = "";
     private bool FacturaModalVisibleBool = false;
     private int? SelectedPrestacionId;
     private int pp;
+    private int pps;
+    private int priCita;
     private string horaInput { get; set; } = "00:00"; // Valor predeterminado en formato HH:mm
 
 
@@ -240,6 +300,7 @@ else
     private FacturacionDTOS FacturaData = new FacturacionDTOS();
     private List<DetallesDTOS> DetallesFactura = new List<DetallesDTOS>();
     private DetallesDTOS DetalleActual = new DetallesDTOS();
+    private DiagnosticoDTOS diagnosticoDTOS = new DiagnosticoDTOS();
     private List<Prestaciones> ListaPrestaciones = new List<Prestaciones>();
     [Inject] ITrabajadores? trabajadoresServices { get; set; }
     [Inject] IPrestacionesServices? prestacionesServices { get; set; }
@@ -251,6 +312,7 @@ else
     private ClientesDTOS NuevoCliente = new ClientesDTOS();
     private List<Clientes> ListCliente = new List<Clientes>();
     private Clientes unicCliente = new Clientes();
+    private Citas unicCita = new Citas();
     private List<Trabajadores> ListTrabajadores = new List<Trabajadores>();
     private List<Padecimientos> ListaPdecimientos = new List<Padecimientos>();
     private List<Prestaciones> ListPrestaciones = new List<Prestaciones>();
@@ -404,7 +466,11 @@ else
 
         pp = NuevaCita.CitasId;
         // Guardar factura y cita
-        await CitasService.AddFacturaAndUpdateCita(factura, DetallesFactura, NuevaCita.CitasId);
+        var res= await CitasService.AddFacturaAndUpdateCita(factura, DetallesFactura, NuevaCita.CitasId);
+        if(res.IsSuccess)
+        {
+            FacturaModalVisibleBool = false;
+        }
     }
     private void AddDetalle()
     {
@@ -425,7 +491,7 @@ else
             {
                 detalle.PrestacionesId = prestacionId;
                 detalle.Precio = prestacionSeleccionada.costo;
-               
+
                 // Agregar a la lista de detalles si no está ya presente
                 var detalleExistente = DetallesFactura.FirstOrDefault(d => d.PrestacionesId == prestacionId);
 
@@ -436,7 +502,7 @@ else
                 else
                 {
                     detalleExistente.Precio = prestacionSeleccionada.costo;
-             }
+                }
 
                 Console.WriteLine($"Prestación: {prestacionSeleccionada.Name}, Costo: {prestacionSeleccionada.costo}");
             }
@@ -448,6 +514,80 @@ else
     }
 
 
+    private async Task ShowClienteDiagnosticoModal(int citaId, int clienteId)
+    {
+        // Obtener información del cliente por ID
+        var clienteResponse = await ClienteService.ClienteExist(clienteId);
 
+        var citaResponse = await FacturacionService.GetCitasId(citaId);
+
+        if (clienteResponse != null && clienteResponse.IsSuccess && citaResponse!= null && citaResponse.IsSuccess)
+        {
+            unicCliente = clienteResponse.client;
+            priCita = citaResponse.citaIDSS;
+        }
+        else
+        {
+            unicCliente = new Clientes { Nombre = "Información no disponible" };
+
+        }
+
+        // Mostrar el modal
+        ClienteDiagnosticoModalDisplay = "block";
+        ClienteDiagnosticoModalVisible = "show";
+        ClienteDiagnosticoModalVisibleBool = true;
+    }
+
+
+    // Función para ocultar el modal de cliente y diagnóstico
+    private void HideClienteDiagnosticoModal()
+    {
+        ClienteDiagnosticoModalDisplay = "none";
+        ClienteDiagnosticoModalVisible = "";
+        ClienteDiagnosticoModalVisibleBool = false;
+    }
+
+    // Función para guardar el diagnóstico
+    private async Task GuardarDiagnostico()
+    {
+        if (!string.IsNullOrWhiteSpace(NuevoDiagnostico))
+        {
+            var cita = CitasOrdenadas.FirstOrDefault(c => c.CitasId == priCita );
+            if (cita != null)
+            {
+            // Crear objeto de diagnóstico
+            var diagnostico = new DiagnosticoDTOS
+                {
+
+                    Observaciobes = NuevoDiagnostico,
+                   Padecimientos = Padetms
+
+
+                };
+
+            // Guardar el diagnóstico en el servicio correspondiente
+            var response = await ClienteService.AddDiagnostico(diagnostico);
+
+            if (response.IsSuccess)
+            {
+                Console.WriteLine("Diagnóstico guardado con éxito.");
+                NuevoDiagnostico = ""; // Resetear el campo de diagnóstico
+
+                HideClienteDiagnosticoModal();
+                pp = response.NewDiagnosticoId;
+                await FacturacionService.UpdateDig(priCita,pp);
+                await ShowFacturaModal(pp);
+            }
+            else
+            {
+                Console.WriteLine("Error al guardar el diagnóstico: " + response.Message);
+            }
+        }
+        else
+        {
+            Console.WriteLine("El diagnóstico no puede estar vacío.");
+        }
+    }
+}
 }
 

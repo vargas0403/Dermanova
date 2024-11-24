@@ -7,5 +7,6 @@
         public bool IsSuccess { get; set; } = false;
 
         public int NewClienteId { get; set; }
+        public int NewDiagnosticoId {  get; set; }
     }
 }

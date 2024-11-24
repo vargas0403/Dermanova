@@ -7,40 +7,40 @@
       "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\cruds\\citascrud\\cronograma.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\cruds\\ccliente\\clientesdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\cruds\\ccliente\\clientesdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\services\\clientesservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\services\\clientesservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\models\\responses\\getresponses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\models\\responses\\getresponses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\models\\responses\\baseresponses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\models\\responses\\baseresponses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\services\\citas_facturacionservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\services\\citas_facturacionservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\services\\interfaceservices\\icitas_facturacionservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\services\\interfaceservices\\icitas_facturacionservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\models\\diagnosticos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\models\\diagnosticos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\models\\trabajadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\models\\trabajadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\cruds\\ccliente\\addcliente.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\cruds\\ccliente\\addcliente.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\models\\dtos\\diagnosticodtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\models\\dtos\\diagnosticodtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\services\\interfaceservices\\iclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\services\\interfaceservices\\iclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\cruds\\citascrud\\registros_citas.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\cruds\\citascrud\\registros_citas.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|c:\\users\\varga\\onedrive\\desktop\\tesis\\dermanovapr.sln\\dermanovapr\\cruds\\ccliente\\clientesdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4236E2F0-9F18-4C86-A3B1-00FD22C92779}|dermanovaPr\\dermanovaPr.csproj|solutionrelative:dermanovapr\\cruds\\ccliente\\clientesdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,33 +50,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AddCliente.razor",
-              "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\CRUDs\\CCliente\\AddCliente.razor",
-              "RelativeDocumentMoniker": "dermanovaPr\\CRUDs\\CCliente\\AddCliente.razor",
-              "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\CRUDs\\CCliente\\AddCliente.razor",
-              "RelativeToolTip": "dermanovaPr\\CRUDs\\CCliente\\AddCliente.razor",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-20T03:55:00.577Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ClientesData.razor",
-              "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\CRUDs\\CCliente\\ClientesData.razor",
-              "RelativeDocumentMoniker": "dermanovaPr\\CRUDs\\CCliente\\ClientesData.razor",
-              "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\CRUDs\\CCliente\\ClientesData.razor",
-              "RelativeToolTip": "dermanovaPr\\CRUDs\\CCliente\\ClientesData.razor",
-              "ViewState": "AQIAAOQAAAAAAAAAAAAuwPcAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-20T03:48:06.055Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -85,22 +60,63 @@
               "RelativeDocumentMoniker": "dermanovaPr\\CRUDs\\CitasCRUD\\Cronograma.razor",
               "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\CRUDs\\CitasCRUD\\Cronograma.razor",
               "RelativeToolTip": "dermanovaPr\\CRUDs\\CitasCRUD\\Cronograma.razor",
-              "ViewState": "AQIAAJkBAAAAAAAAAAAwwKIBAAAEAAAA",
+              "ViewState": "AQIAACwCAAAAAAAAAAAwwEACAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-19T21:46:20.951Z",
+              "WhenOpened": "2024-11-21T19:54:27.864Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GetResponses.cs",
+              "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Models\\Responses\\GetResponses.cs",
+              "RelativeDocumentMoniker": "dermanovaPr\\Models\\Responses\\GetResponses.cs",
+              "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Models\\Responses\\GetResponses.cs",
+              "RelativeToolTip": "dermanovaPr\\Models\\Responses\\GetResponses.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T18:38:16.187Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "RelativeDocumentMoniker": "dermanovaPr\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "RelativeToolTip": "dermanovaPr\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-20T04:07:35.562Z"
+              "Title": "Citas_FacturacionServices.cs",
+              "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Services\\Citas_FacturacionServices.cs",
+              "RelativeDocumentMoniker": "dermanovaPr\\Services\\Citas_FacturacionServices.cs",
+              "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Services\\Citas_FacturacionServices.cs",
+              "RelativeToolTip": "dermanovaPr\\Services\\Citas_FacturacionServices.cs",
+              "ViewState": "AQIAAKUBAAAAAAAAAAAwwLMBAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T21:42:50.238Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Diagnosticos.cs",
+              "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Models\\Diagnosticos.cs",
+              "RelativeDocumentMoniker": "dermanovaPr\\Models\\Diagnosticos.cs",
+              "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Models\\Diagnosticos.cs",
+              "RelativeToolTip": "dermanovaPr\\Models\\Diagnosticos.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T21:29:20.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DiagnosticoDTOS.cs",
+              "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Models\\Dtos\\DiagnosticoDTOS.cs",
+              "RelativeDocumentMoniker": "dermanovaPr\\Models\\Dtos\\DiagnosticoDTOS.cs",
+              "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Models\\Dtos\\DiagnosticoDTOS.cs",
+              "RelativeToolTip": "dermanovaPr\\Models\\Dtos\\DiagnosticoDTOS.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T21:29:13.71Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -110,72 +126,62 @@
               "RelativeDocumentMoniker": "dermanovaPr\\Services\\InterfaceServices\\IClientes.cs",
               "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Services\\InterfaceServices\\IClientes.cs",
               "RelativeToolTip": "dermanovaPr\\Services\\InterfaceServices\\IClientes.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAA3AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T02:47:28.965Z"
+              "WhenOpened": "2024-11-21T21:25:29.82Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "ClientesServices.cs",
               "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Services\\ClientesServices.cs",
               "RelativeDocumentMoniker": "dermanovaPr\\Services\\ClientesServices.cs",
               "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Services\\ClientesServices.cs",
               "RelativeToolTip": "dermanovaPr\\Services\\ClientesServices.cs",
-              "ViewState": "AQIAAJMAAAAAAAAAAAAwwKEAAAAIAAAA",
+              "ViewState": "AQIAAL8AAAAAAAAAAAAwwM0AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T02:47:02.275Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Register.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
-              "RelativeDocumentMoniker": "dermanovaPr\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
-              "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
-              "RelativeToolTip": "dermanovaPr\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
-              "ViewState": "AQIAAEMAAAAAAAAAAAAcwGEAAABXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T02:38:11.08Z",
+              "WhenOpened": "2024-11-21T20:53:48.384Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Citas_FacturacionServices.cs",
-              "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Services\\Citas_FacturacionServices.cs",
-              "RelativeDocumentMoniker": "dermanovaPr\\Services\\Citas_FacturacionServices.cs",
-              "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Services\\Citas_FacturacionServices.cs",
-              "RelativeToolTip": "dermanovaPr\\Services\\Citas_FacturacionServices.cs",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAowAAAAAAAAAAA",
+              "Title": "BaseResponses.cs",
+              "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Models\\Responses\\BaseResponses.cs",
+              "RelativeDocumentMoniker": "dermanovaPr\\Models\\Responses\\BaseResponses.cs",
+              "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Models\\Responses\\BaseResponses.cs",
+              "RelativeToolTip": "dermanovaPr\\Models\\Responses\\BaseResponses.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T23:13:44.589Z",
+              "WhenOpened": "2024-11-22T04:41:30.379Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Trabajadores.cs",
-              "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Models\\Trabajadores.cs",
-              "RelativeDocumentMoniker": "dermanovaPr\\Models\\Trabajadores.cs",
-              "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Models\\Trabajadores.cs",
-              "RelativeToolTip": "dermanovaPr\\Models\\Trabajadores.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAA5wBsAAAAIAAAA",
+              "DocumentIndex": 5,
+              "Title": "Icitas_FacturacionServices.cs",
+              "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Services\\InterfaceServices\\Icitas_FacturacionServices.cs",
+              "RelativeDocumentMoniker": "dermanovaPr\\Services\\InterfaceServices\\Icitas_FacturacionServices.cs",
+              "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\Services\\InterfaceServices\\Icitas_FacturacionServices.cs",
+              "RelativeToolTip": "dermanovaPr\\Services\\InterfaceServices\\Icitas_FacturacionServices.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAgwBcAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T04:05:23.986Z"
+              "WhenOpened": "2024-11-22T04:32:27.794Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "Registros_Citas.razor",
-              "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\CRUDs\\CitasCRUD\\Registros_Citas.razor",
-              "RelativeDocumentMoniker": "dermanovaPr\\CRUDs\\CitasCRUD\\Registros_Citas.razor",
-              "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\CRUDs\\CitasCRUD\\Registros_Citas.razor",
-              "RelativeToolTip": "dermanovaPr\\CRUDs\\CitasCRUD\\Registros_Citas.razor",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAAAHEAAAAFAAAA",
+              "Title": "ClientesData.razor",
+              "DocumentMoniker": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\CRUDs\\CCliente\\ClientesData.razor",
+              "RelativeDocumentMoniker": "dermanovaPr\\CRUDs\\CCliente\\ClientesData.razor",
+              "ToolTip": "C:\\Users\\varga\\OneDrive\\Desktop\\TESIS\\dermanovaPr.sln\\dermanovaPr\\CRUDs\\CCliente\\ClientesData.razor",
+              "RelativeToolTip": "dermanovaPr\\CRUDs\\CCliente\\ClientesData.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAPcAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-19T21:18:49.065Z"
+              "WhenOpened": "2024-11-21T20:14:28.519Z",
+              "EditorCaption": ""
             }
           ]
         }

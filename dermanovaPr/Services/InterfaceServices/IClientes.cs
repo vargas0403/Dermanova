@@ -11,5 +11,7 @@ namespace dermanovaPr.Services.InterfaceServices
         public Task<GetResponses> CelularExist(string Celular);
 
         public Task<GetResponses> ClienteExist(int Id);
+
+        public Task<BaseResponses> AddDiagnostico(DiagnosticoDTOS dTOS);
     }
 }
